@@ -59,7 +59,7 @@ const Homepage = () => {
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={handleLogin} style={{backgroundColor:"#FFC0CB", paddingHorizontal:20, paddingVertical:10, borderRadius:"30px"}}>
+                <TouchableOpacity onPress={handleLogin} style={styles.signInOutBtn}>
                     <Text>
                         Log In
                     </Text>

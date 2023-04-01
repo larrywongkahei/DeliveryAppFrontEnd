@@ -11,6 +11,12 @@ const styles = StyleSheet.create({
         borderRadius:"30px",
         borderColor:"#FFC0CB",
         borderWidth:2,
+    },
+    signInOutBtn:{
+        backgroundColor:"#FFC0CB",
+        paddingHorizontal:20, 
+        paddingVertical:10, 
+        borderRadius:"30px"
     }
 
 })
