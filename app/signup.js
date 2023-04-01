@@ -9,6 +9,8 @@ const Newpage = () =>{
     const [email, setEmail] = useState("")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
+
     
     return (
         <SafeAreaView style={{flex:1, backgroundColor:"#FFFFFF"}}>
@@ -23,17 +25,25 @@ const Newpage = () =>{
                     placeholderTextColor="gray"
                     placeholder="Username"
                     value={username}
-                    onChangeText={(input) => {setEmail(input)}}/>
-
-                <TextInput style={styles.homeInput}
-                    placeholderTextColor="gray"
-                    placeholder="Email address"
-                    value={username}
                     onChangeText={(input) => {setUsername(input)}}/>
 
                 <TextInput style={styles.homeInput}
                     placeholderTextColor="gray"
+                    placeholder="Email address"
+                    value={email}
+                    onChangeText={(input) => {setEmail(input)}}/>
+
+                <TextInput style={styles.homeInput}
+                    placeholderTextColor="gray"
                     placeholder="Password"
+                    value={password}
+                    onChangeText={(input)=>{setPassword(input)}}
+                    secureTextEntry={true}
+                    />
+
+                <TextInput style={styles.homeInput}
+                    placeholderTextColor="gray"
+                    placeholder="Confirm password"
                     value={password}
                     onChangeText={(input)=>{setPassword(input)}}
                     secureTextEntry={true}
@@ -44,6 +54,7 @@ const Newpage = () =>{
                         Sign up
                     </Text>
                 </TouchableOpacity>
+
             </View>
         </SafeAreaView>
     )
