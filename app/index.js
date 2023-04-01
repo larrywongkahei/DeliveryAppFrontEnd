@@ -1,6 +1,5 @@
 import { Text, TextInput, View, ScrollView, SafeAreaView, TouchableOpacity} from "react-native";
 import { Stack, useRouter } from "expo-router";
-import Newpage from "./newpage";
 import styles from "../style.style";
 
 const Homepage = () => {
@@ -43,7 +42,7 @@ const Homepage = () => {
                 <Text>
                     Dont't have an account?
                 </Text>
-                <TouchableOpacity onPress={()=>{router.push('/newpage')}} style={{}}>
+                <TouchableOpacity onPress={()=>{router.push('/signup')}} style={{}}>
                     <Text style={{textAlign:"center", marginBottom:10, color:"#FC6C85"}}>
                         Sign Up
                     </Text>
