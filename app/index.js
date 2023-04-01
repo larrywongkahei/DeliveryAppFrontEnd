@@ -1,5 +1,6 @@
-import { Text, TextInput, View, ScrollView, SafeAreaView, Button} from "react-native";
+import { Text, TextInput, View, ScrollView, SafeAreaView, TouchableOpacity} from "react-native";
 import { Stack, useRouter } from "expo-router";
+import Newpage from "./newpage";
 import styles from "../style.style";
 
 const Homepage = () => {
@@ -15,22 +16,38 @@ const Homepage = () => {
             }}
             />
 
-            <View style={{marginTop:"70%", gap:24}}>
+            <View style={{gap:24, flex:1, justifyContent:"center", alignItems:"center"}}>
                 <TextInput style={styles.homeInput}
                     placeholderTextColor="gray"
-                    placeholder="Account Name"
+                    placeholder="Email address or username"
                     defaultValue=""/>
 
                 <TextInput style={styles.homeInput}
                     placeholderTextColor="gray"
                     placeholder="Password"
                     defaultValue=""/>
-                    
-                <Button 
-                title="Signin"
-                color=""
-                onPress={()=>{}}
-                />
+
+                <TouchableOpacity onPress={()=>{}} style={{}}>
+                    <Text style={{color:"#FC6C85"}}>
+                        Forgotten password?
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={()=>{}} style={{backgroundColor:"#FFC0CB", paddingHorizontal:20, paddingVertical:10, borderRadius:"30px"}}>
+                    <Text>
+                        Log In
+                    </Text>
+                </TouchableOpacity>
+            </View>
+            <View style={{flexDirection:"row", gap:2, justifyContent:"center"}}>
+                <Text>
+                    Dont't have an account?
+                </Text>
+                <TouchableOpacity onPress={()=>{router.push('/newpage')}} style={{}}>
+                    <Text style={{textAlign:"center", marginBottom:10, color:"#FC6C85"}}>
+                        Sign Up
+                    </Text>
+                </TouchableOpacity>
             </View>
         </SafeAreaView>
     )
