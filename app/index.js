@@ -1,10 +1,26 @@
-import { Text, TextInput, View, ScrollView, SafeAreaView, TouchableOpacity} from "react-native";
+import { Text, TextInput, View, ScrollView, SafeAreaView, TouchableOpacity, Alert} from "react-native";
 import { Stack, useRouter } from "expo-router";
+import { useState } from "react";
 import styles from "../style.style";
 
 const Homepage = () => {
 
     const router = useRouter();
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+
+    function handleLogin(){
+        if(username === "abc" && password === "abb"){
+            router.replace('/home')
+        }else{
+            Alert.alert('Log in failed', 'Wrong username or password',
+                {
+                  text: 'Cancel',
+                  onPress: () => console.log('Cancel Pressed'),
+                  style: 'cancel',
+                }
+        )}
+    }
 
     return (
         <SafeAreaView style={{flex:1, backgroundColor:"#FFFFFF"}}>
@@ -19,12 +35,16 @@ const Homepage = () => {
                 <TextInput style={styles.homeInput}
                     placeholderTextColor="gray"
                     placeholder="Email address or username"
-                    defaultValue=""/>
+                    value={username}
+                    onChangeText={(text) => {setUsername(text)}}/>
 
                 <TextInput style={styles.homeInput}
                     placeholderTextColor="gray"
                     placeholder="Password"
-                    defaultValue=""/>
+                    value={password}
+                    onChangeText={(text)=>{setPassword(text)}}
+                    secureTextEntry={true}
+                    />
 
                 <TouchableOpacity onPress={()=>{}} style={{}}>
                     <Text style={{color:"#FC6C85"}}>
@@ -32,7 +52,7 @@ const Homepage = () => {
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={()=>{router.replace('/home')}} style={{backgroundColor:"#FFC0CB", paddingHorizontal:20, paddingVertical:10, borderRadius:"30px"}}>
+                <TouchableOpacity onPress={handleLogin} style={{backgroundColor:"#FFC0CB", paddingHorizontal:20, paddingVertical:10, borderRadius:"30px"}}>
                     <Text>
                         Log In
                     </Text>
