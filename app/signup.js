@@ -63,8 +63,8 @@ const Newpage = () =>{
                 <TextInput style={styles.homeInput}
                     placeholderTextColor="gray"
                     placeholder="Confirm password"
-                    value={password}
-                    onChangeText={(input)=>{setPassword(input)}}
+                    value={confirmPassword}
+                    onChangeText={(input)=>{setConfirmPassword(input)}}
                     secureTextEntry={true}
                     />
 
