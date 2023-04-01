@@ -32,7 +32,7 @@ const Homepage = () => {
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={()=>{}} style={{backgroundColor:"#FFC0CB", paddingHorizontal:20, paddingVertical:10, borderRadius:"30px"}}>
+                <TouchableOpacity onPress={()=>{router.replace('/home')}} style={{backgroundColor:"#FFC0CB", paddingHorizontal:20, paddingVertical:10, borderRadius:"30px"}}>
                     <Text>
                         Log In
                     </Text>
