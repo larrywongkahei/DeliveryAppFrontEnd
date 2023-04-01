@@ -10,16 +10,23 @@ const Homepage = () => {
     const [password, setPassword] = useState("")
 
     function handleLogin(){
-        if(username === "abc" && password === "abb"){
-            router.replace('/home')
-        }else{
+        if(!username || !password){
+            Alert.alert('Log in failed', 'Fields could not be empty',
+            {
+              text: 'Cancel',
+              onPress: () => console.log('Cancel Pressed'),
+              style: 'cancel',
+            })
+        }else if (username !== "abc" || password !== "abb"){
             Alert.alert('Log in failed', 'Wrong username or password',
                 {
                   text: 'Cancel',
                   onPress: () => console.log('Cancel Pressed'),
                   style: 'cancel',
                 }
-        )}
+        )}else{
+            router.replace('/home')
+        }
     }
 
     return (
