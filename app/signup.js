@@ -1,7 +1,8 @@
-import { View, Text, SafeAreaView, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, SafeAreaView, TextInput, TouchableOpacity, Alert } from "react-native";
 import { Stack, useRouter } from "expo-router";
 import { useState } from "react";
 import styles from "../style.style";
+import API from "../helpers/APIs";
 
 const Newpage = () =>{
 
@@ -11,6 +12,24 @@ const Newpage = () =>{
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
+    async function handleSignup(){
+        const data = {
+            'username' : username,
+            'email' : email,
+            'password' : password
+        }
+        const response = await API.createUser(data)
+        if (response){
+            router.replace('/home')
+        }else{
+            console.log('failed')
+            Alert.alert('Signup Failed', 'Wrong username or password', 
+                {
+                  text: 'Cancel',
+                  onPress: () => console.log('Cancel Pressed'),
+                  style: 'cancel',
+                })}
+    }
     
     return (
         <SafeAreaView style={{flex:1, backgroundColor:"#FFFFFF"}}>
@@ -49,7 +68,7 @@ const Newpage = () =>{
                     secureTextEntry={true}
                     />
 
-                <TouchableOpacity onPress={()=>{}} style={styles.signInOutBtn}>
+                <TouchableOpacity onPress={handleSignup} style={styles.signInOutBtn}>
                     <Text>
                         Sign up
                     </Text>

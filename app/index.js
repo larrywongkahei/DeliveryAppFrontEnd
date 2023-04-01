@@ -1,6 +1,7 @@
 import { Text, TextInput, View, ScrollView, SafeAreaView, TouchableOpacity, Alert} from "react-native";
 import { Stack, useRouter } from "expo-router";
 import { useState } from "react";
+import API from '../helpers/APIs'
 import styles from "../style.style";
 
 const Homepage = () => {
@@ -9,24 +10,21 @@ const Homepage = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
-    function handleLogin(){
-        if(!username || !password){
-            Alert.alert('Log in failed', 'Fields could not be empty',
-            {
-              text: 'Cancel',
-              onPress: () => console.log('Cancel Pressed'),
-              style: 'cancel',
-            })
-        }else if (username !== "abc" || password !== "abb"){
-            Alert.alert('Log in failed', 'Wrong username or password',
+    async function handleLogin(){
+        const user = {
+            "username" : username,
+            "password" : password
+        }
+        const response = await API.Login(user)
+        if (response){
+            router.replace('/home')
+        }else{
+            Alert.alert('Login Failed', 'Wrong username or password', 
                 {
                   text: 'Cancel',
                   onPress: () => console.log('Cancel Pressed'),
                   style: 'cancel',
-                }
-        )}else{
-            router.replace('/home')
-        }
+                })}
     }
 
     return (
