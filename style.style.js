@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         color:"#808080", 
         width:"75%", 
         textAlign:"center",
-        borderRadius:"30px",
+        borderRadius:30,
         borderColor:"#FFC0CB",
         borderWidth:2,
     },
@@ -16,13 +16,20 @@ const styles = StyleSheet.create({
         backgroundColor:"#FFC0CB",
         paddingHorizontal:20, 
         paddingVertical:10, 
-        borderRadius:"30px"
+        borderRadius:30
     },
     days:{
         borderWidth:0.5,
         paddingVertical:20,
         width:70,
         textAlign:"center"
+    },
+    daysChoosen:{
+        borderWidth:0.5,
+        paddingVertical:20,
+        width:70,
+        textAlign:"center",
+        backgroundColor:'#50C878'
     }
 
 })

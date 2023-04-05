@@ -1,8 +1,7 @@
-import { SafeAreaView, Text, TouchableOpacity } from "react-native";
+import { SafeAreaView, Text, View, TouchableOpacity } from "react-native";
 import { Stack, useRouter } from "expo-router";
-import { View } from "react-native-web";
 
-const shops = () =>{
+const Shops = () =>{
     const router = useRouter()
 
     function handleNav(name){
@@ -42,4 +41,4 @@ const shops = () =>{
     )
 }
 
-export default shops;
+export default Shops;
