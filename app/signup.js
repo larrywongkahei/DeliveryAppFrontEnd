@@ -20,7 +20,7 @@ const Newpage = () =>{
         }
         const response = await API.createUser(data)
         if (response){
-            router.replace('/home')
+            router.replace('/shop')
         }else{
             console.log('failed')
             Alert.alert('Signup Failed', 'Wrong username or password', 

@@ -17,7 +17,7 @@ const Homepage = () => {
         }
         const response = await API.Login(user)
         if (response){
-            router.replace('/home')
+            router.replace('/shop')
         }else{
             Alert.alert('Login Failed', 'Wrong username or password', 
                 {
