@@ -1,21 +1,21 @@
 import { SafeAreaView, View, Text } from "react-native";
-import { useRouter, useSearchParams } from "expo-router";
+import { useSearchParams } from "expo-router";
 import { Stack } from "expo-router";
 
 const Home = () => {
 
     const params = useSearchParams()
-    console.log(params)
-
     return (
         <SafeAreaView>
             {params?
-            <Text>
-                {params.shop}
-            </Text> : null}
-            <Text>
-                I am home page
-            </Text>
+            <View>
+                <Stack.Screen
+                options={{
+                    headerStyle:{backgroundColor:"#FFC0CB"},
+                    headerTitle: params.shop,
+                }}
+                />
+            </View>: null}
         </SafeAreaView>
     )
 }

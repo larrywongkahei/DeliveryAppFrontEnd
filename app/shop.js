@@ -25,9 +25,16 @@ const shops = () =>{
                         First shop image
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
+
+                <TouchableOpacity onPress={()=>handleNav('Happy House')}>
                     <Text>
                         Second shop image
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={()=>handleNav('New Orchid Garden')}>
+                    <Text>
+                        Third shop image
                     </Text>
                 </TouchableOpacity>
             </View>
