@@ -1,8 +1,19 @@
 import { Stack } from "expo-router";
 import { SafeAreaView, Text, TouchableOpacity } from "react-native";
 import { View } from "react-native-web";
+import { useState } from "react";
+import styles from "../style.style";
 
 const SignUpForm = () => {
+
+    const [mon, setMon] = useState(false)
+    const [tue, setTue] = useState(false)
+    const [wed, setWed] = useState(false)
+    const [thu, setThu] = useState(false)
+    const [fri, setFri] = useState(false)
+    const [sat, setSat] = useState(false)
+    const [sun, setSun] = useState(false)
+
     return (
         <SafeAreaView style={{}}>
             <Text style={{textAlign:"center", marginTop:"30px", fontSize:"large"}}>
@@ -14,87 +25,44 @@ const SignUpForm = () => {
                 justifyContent:"space-evenly",
                 marginTop:20
             }}>
-                <TouchableOpacity style={{
-                    textAlign:"cetner"
-                    }}>
-                    <Text style={{
-                        borderWidth:0.5,
-                        paddingVertical:20,
-                        width:70,
-                        textAlign:"center"
-                    }}>
+                <TouchableOpacity onPress={() => {setMon(!mon)}}>
+                    <Text style={styles.days}>                        
                         Mon
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{
-                    }}>
-                    <Text style={{
-                        borderWidth:0.5,
-                        paddingVertical:20,
-                        width:70,
-                        textAlign:"center"
-                    }}>                        
+                <TouchableOpacity onPress={() => {setTue(!tue)}}>
+                    <Text style={styles.days}>                                                
                         Tue
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{
-                    }}>
-                    <Text style={{
-                        borderWidth:0.5,
-                        paddingVertical:20,
-                        width:70,
-                        textAlign:"center"
-                    }}>                        
+                <TouchableOpacity onPress={() => {setWed(!wed)}}>
+                    <Text style={styles.days}>                                         
                         Wed
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{
-                    }}>
-                    <Text style={{
-                        borderWidth:0.5,
-                        paddingVertical:20,
-                        width:70,
-                        textAlign:"center"
-                    }}>                        
+                <TouchableOpacity onPress={() => {setThu(!thu)}}>
+                    <Text style={styles.days}>                                         
                         Thu
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{
-                    }}>
-                    <Text style={{
-                        borderWidth:0.5,
-                        paddingVertical:20,
-                        width:70,
-                        textAlign:"center"
-                    }}>                        
+                <TouchableOpacity onPress={() => {setFri(!fri)}}>
+                    <Text style={styles.days}>                                           
                         Fri
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{
-                    }}>
-                    <Text style={{
-                        borderWidth:0.5,
-                        paddingVertical:20,
-                        width:70,
-                        textAlign:"center"
-                    }}>                        
+                <TouchableOpacity onPress={() => {setSat(!sat)}}>
+                    <Text style={styles.days}>                                           
                         Sat
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{
-                    }}>
-                    <Text style={{
-                        borderWidth:0.5,
-                        paddingVertical:20,
-                        width:70,
-                        textAlign:"center"
-                    }}>                        
+                <TouchableOpacity onPress={() => {setSun(!sun)}}>
+                    <Text style={styles.days}>                        
                         Sun
                     </Text>
                 </TouchableOpacity>

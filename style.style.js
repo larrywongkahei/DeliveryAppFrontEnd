@@ -17,6 +17,12 @@ const styles = StyleSheet.create({
         paddingHorizontal:20, 
         paddingVertical:10, 
         borderRadius:"30px"
+    },
+    days:{
+        borderWidth:0.5,
+        paddingVertical:20,
+        width:70,
+        textAlign:"center"
     }
 
 })
