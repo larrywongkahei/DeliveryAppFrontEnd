@@ -20,14 +20,16 @@ const styles = StyleSheet.create({
     },
     days:{
         borderWidth:0.5,
-        paddingVertical:20,
-        width:70,
+        paddingTop:20,
+        paddingBottom:30,
+        width:50,
         textAlign:"center"
     },
     daysChoosen:{
         borderWidth:0.5,
-        paddingVertical:20,
-        width:70,
+        paddingTop:20,
+        paddingBottom:30,
+        width:50,
         textAlign:"center",
         backgroundColor:'#50C878'
     }
