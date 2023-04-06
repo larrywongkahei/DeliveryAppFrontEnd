@@ -21,17 +21,51 @@ const styles = StyleSheet.create({
     days:{
         borderWidth:0.5,
         paddingTop:20,
-        paddingBottom:30,
+        paddingBottom:35,
         width:50,
         textAlign:"center"
     },
-    daysChoosen:{
+    daysChosen:{
         borderWidth:0.5,
         paddingTop:20,
-        paddingBottom:30,
+        paddingBottom:35,
         width:50,
         textAlign:"center",
         backgroundColor:'#50C878'
+    },
+    shiftButton:{
+        borderWidth:1,
+        marginTop:20,
+        width:120,
+        borderRadius:10,
+        paddingTop:20,
+        paddingBottom:35,
+    },
+    shiftText:{
+        fontSize:"large", 
+        fontWeight:"bold", 
+        textAlign:"center", 
+        marginTop:12
+    },
+    shopButton:{
+        borderWidth:1,
+        marginTop:20,
+        width:120,
+        borderRadius:10,
+        paddingTop:10,
+        paddingBottom:25,
+        textAlign:"center", 
+    },
+    shopChosen:{
+        borderWidth:1,
+        marginTop:20,
+        width:120,
+        borderRadius:10,
+        paddingTop:10,
+        paddingBottom:25,
+        textAlign:"center",
+        backgroundColor:'#50C878',
+
     }
 
 })
