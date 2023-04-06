@@ -41,6 +41,15 @@ const styles = StyleSheet.create({
         paddingTop:20,
         paddingBottom:35,
     },
+    shiftButtonChosen:{
+        borderWidth:1,
+        marginTop:20,
+        width:120,
+        borderRadius:10,
+        paddingTop:20,
+        paddingBottom:35,
+        backgroundColor:'#50C878',
+    },
     shiftText:{
         fontSize:"large", 
         fontWeight:"bold", 

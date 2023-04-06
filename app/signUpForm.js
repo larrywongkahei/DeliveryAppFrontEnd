@@ -17,16 +17,6 @@ const SignUpForm = () => {
     const Shops = ["BMG", "HH", "NOG"]
 
     useEffect(()=> {
-        const newList = [...dayList]
-        const newData = []
-        newList.forEach(each => {
-            if (each.value) {
-                newData.push(each.day)
-            }
-        })
-    }, [dayList])
-
-    useEffect(()=> {
         const newData = []
         dayList.forEach(each => {
             if (each.value) {
@@ -34,6 +24,7 @@ const SignUpForm = () => {
             }
         })
         setData(newData)
+        console.log(dayList)
     }, [mon, tue, wed, thu, fri, sat, sun])
 
     return (
@@ -156,13 +147,27 @@ const SignUpForm = () => {
                                 </View>
                                 <View style={{flexDirection:"row", justifyContent:"space-evenly"}}>
 
-                                    <TouchableOpacity style={styles.shiftButton}>
+                                    <TouchableOpacity style={[dayList.find(day => day.day === each).shift === "Full" ? styles.shiftButtonChosen : styles.shiftButton]} onPress={()=>{
+                                                const theDay  = dayList.find(day => day.day === each)
+                                                const newShowList = [...dataToShow]
+                                                const indexOfDayInShowDataList = dataToShow.indexOf(theDay)
+                                                theDay.shift = "Full"
+                                                newShowList[indexOfDayInShowDataList] = theDay
+                                                setData(newShowList)
+}}>
                                         <Text style={styles.shiftText}>
                                             Full
                                         </Text>
                                     </TouchableOpacity>
 
-                                    <TouchableOpacity style={styles.shiftButton}>
+                                    <TouchableOpacity style={[dayList.find(day => day.day === each).shift === "Half" ? styles.shiftButtonChosen : styles.shiftButton]} onPress={()=>{
+                                                const theDay  = dayList.find(day => day.day === each)
+                                                const newShowList = [...dataToShow]
+                                                const indexOfDayInShowDataList = dataToShow.indexOf(theDay)
+                                                theDay.shift = "Half"
+                                                newShowList[indexOfDayInShowDataList] = theDay
+                                                setData(newShowList)
+                                    }}>
                                         <Text style={styles.shiftText}>
                                             Half
                                         </Text>
