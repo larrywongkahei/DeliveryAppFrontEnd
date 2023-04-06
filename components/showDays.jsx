@@ -6,21 +6,6 @@ import styles from "../style.style";
 const ShowDays = props => {
 
     const dayList = props.dayList
-    const dataToShow = props.dataToShow
-    const mon = props.mon
-    const tue = props.tue
-    const wed = props.wed
-    const thu = props.thu
-    const fri = props.fri
-    const sat = props.sat
-    const sun = props.sun
-
-
-    // useEffect(()=> {
-    //     props.updateDataToShow()
-    //     console.log(dataToShow)
-    // }, [mon, tue, wed, thu, fri, sat, sun])
-
 
     function updateDataToShow() {
         const newData = []
