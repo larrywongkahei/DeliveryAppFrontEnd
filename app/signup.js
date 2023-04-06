@@ -36,7 +36,14 @@ const Newpage = () =>{
             <Stack.Screen 
             options={{
                 headerStyle:{backgroundColor:"#FFC0CB"},
-                headerTitle:"Signup"
+                headerTitle:"SignUp",
+                // headerRight: () => (
+                //     <TouchableOpacity>
+                //         <Text style={{fontSize:20, fontWeight:"bole"}}>
+                //             Next
+                //         </Text>
+                //     </TouchableOpacity>
+                // )
             }}
             />
             <View style={{gap:24, flex:1, justifyContent:"center", alignItems:"center"}}>
@@ -70,7 +77,7 @@ const Newpage = () =>{
 
                 <TouchableOpacity onPress={handleSignup} style={styles.signInOutBtn}>
                     <Text>
-                        Sign up
+                        Next
                     </Text>
                 </TouchableOpacity>
 
