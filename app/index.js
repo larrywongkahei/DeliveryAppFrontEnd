@@ -11,20 +11,20 @@ const Homepage = () => {
     const [password, setPassword] = useState("")
 
     async function handleLogin(){
-        // const user = {
-        //     "username" : username,
-        //     "password" : password
-        // }
-        // const response = await API.Login(user)
-        // if (response){
+        const user = {
+            "username" : username,
+            "password" : password
+        }
+        const response = await API.Login(user)
+        if (response){
             router.replace('/shop')
-        // }else{
-        //     Alert.alert('Login Failed', 'Wrong username or password', 
-        //         {
-        //           text: 'Cancel',
-        //           onPress: () => console.log('Cancel Pressed'),
-        //           style: 'cancel',
-        //         })}
+        }else{
+            Alert.alert('Login Failed', 'Wrong username or password', 
+                {
+                  text: 'Cancel',
+                  onPress: () => console.log('Cancel Pressed'),
+                  style: 'cancel',
+                })}
     }
 
     return (
