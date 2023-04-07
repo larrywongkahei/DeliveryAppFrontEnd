@@ -36,7 +36,6 @@ const Homepage = () => {
             Alert.alert('Login Failed', 'Wrong username or password', 
                 {
                   text: 'Cancel',
-                  onPress: () => console.log('Cancel Pressed'),
                   style: 'cancel',
                 })}
     }

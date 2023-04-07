@@ -30,7 +30,6 @@ const SignUpForm = () => {
     }
 
     function setShowData(data){
-        console.log(data)
         setData(data)
     }
 
