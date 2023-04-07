@@ -37,12 +37,6 @@ const API = {
             'Content-type': 'application/json'
           }
         })
-        .then(response => {
-            if (response.status === 200){
-                return true
-            }else{
-                return false
-            }})
     }
 }
 

@@ -35,6 +35,7 @@ const SignUpForm = () => {
             const dataToUpdate = {'name':params.username, 'data':data}
             API.UpdateUser(dataToUpdate)
             .then(response => {
+                console.log(response)
                 if (response.status === 200){
                     router.replace('/home')
                 }
@@ -55,6 +56,7 @@ const SignUpForm = () => {
             const theShop = Shops.find(shop => shop.name === each.shopChosen)
             if(theShop){
                 const data = {
+                    'weekday' : each.day,
                     'shop' : each.shopChosen,
                     'shift' : each.shift,
                     'time' : theShop[each.shift] || ""
@@ -65,8 +67,6 @@ const SignUpForm = () => {
         })
         return (newData)
     }
-    console.log(getData())
-
 
     function updateDataToShow(){
         const newData = []
