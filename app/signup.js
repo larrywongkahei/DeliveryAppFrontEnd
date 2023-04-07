@@ -47,11 +47,9 @@ const Newpage = () =>{
             if (response){
                 router.push({pathname: '/signUpForm', params:{username : username}})
             }else{
-                console.log('failed')
                 Alert.alert('Signup Failed', 'Email or username is used', 
                     {
                     text: 'Cancel',
-                    onPress: () => console.log('Cancel Pressed'),
                     style: 'cancel',
                     })}
         }

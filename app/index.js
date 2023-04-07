@@ -15,7 +15,6 @@ const Homepage = () => {
             Alert.alert('Login Failed', 'Please fill in all the field', 
                 {
                   text: 'Cancel',
-                  onPress: () => console.log('Cancel Pressed'),
                   style: 'cancel',
                 })
             return false

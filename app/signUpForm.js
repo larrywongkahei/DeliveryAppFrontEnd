@@ -35,7 +35,6 @@ const SignUpForm = () => {
             const dataToUpdate = {'name':params.username, 'data':data}
             API.UpdateUser(dataToUpdate)
             .then(response => {
-                console.log(response)
                 if (response.status === 200){
                     router.replace('/home')
                 }
