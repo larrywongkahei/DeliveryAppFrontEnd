@@ -5,7 +5,7 @@ import styles from "../style.style";
 
 const ShowData = props => {
     const dataToShow = props.dataToShow
-    const Shops = props.Shops
+    const Shops = props.Shopname
     function setDataFromChild(data) {
         props.setDataFunction(data)
     }

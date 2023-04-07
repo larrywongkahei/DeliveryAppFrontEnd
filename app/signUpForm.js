@@ -1,6 +1,7 @@
-import { Stack } from "expo-router";
-import { SafeAreaView, Text, View, TouchableOpacity, ScrollView } from "react-native";
+import { Stack , useSearchParams, useRouter} from "expo-router";
+import { SafeAreaView, Text, View, TouchableOpacity, ScrollView, Alert} from "react-native";
 import { useState, useEffect } from "react";
+import API from "../helpers/APIs";
 import ShowData from "../components/showData";
 import ShowDays from "../components/showDays";
 import styles from "../style.style";
@@ -14,9 +15,57 @@ const SignUpForm = () => {
     const [fri, setFri] = useState({day:"Fri", value:false, shift:"", shopChosen:""})
     const [sat, setSat] = useState({day:"Sat", value:false, shift:"", shopChosen:""})
     const [sun, setSun] = useState({day:"Sun", value:false, shift:"", shopChosen:""})
+    const router = useRouter()
     const dayList = [mon, tue, wed, thu, fri, sat, sun]
+    const BMG = {'name':'BMG', 'Full' : "17:00 - 23:00", 'Half' : "17:30 - 21:30"}
+    const NOG = {'name':'NOG', 'Full' : "16:30 - 23:00", 'Half' : "16:00 - 21:00"}
+    const HH = {'name':'HH', 'Full' : "16:30 - 23:00", 'Half' : "16:00 - 21:00"}
     const [dataToShow, setData] = useState([])
-    const Shops = ["BMG", "HH", "NOG"]
+    const Shopname = ['BMG', 'HH', 'NOG']
+    const Shops = [BMG, NOG, HH]
+    const params = useSearchParams()
+
+    function handleFinishForm(){
+        const data = getData()
+        const arrayOfValue = []
+        data.forEach(each => {
+            arrayOfValue.push(Object.values(each).includes(""))
+        })
+        if (!arrayOfValue.includes(true)){
+            const dataToUpdate = {'name':params.username, 'data':data}
+            API.UpdateUser(dataToUpdate)
+            .then(response => {
+                if (response.status === 200){
+                    router.replace('/home')
+                }
+            })
+        }else{
+            Alert.alert('Signup Failed', 'Please choose the shop and shift for each day', 
+            {
+              text: 'Cancel',
+              style: 'cancel',
+            })
+        }
+    }  
+
+
+    function getData(){    
+        const newData = []    
+        dataToShow.forEach(each => {
+            const theShop = Shops.find(shop => shop.name === each.shopChosen)
+            if(theShop){
+                const data = {
+                    'shop' : each.shopChosen,
+                    'shift' : each.shift,
+                    'time' : theShop[each.shift] || ""
+            }
+            newData.push(data)
+
+        }
+        })
+        return (newData)
+    }
+    console.log(getData())
 
 
     function updateDataToShow(){
@@ -62,9 +111,9 @@ const SignUpForm = () => {
                     </Text>
                 </View>
 
-                <ShowData dataToShow={dataToShow} Shops={Shops} setDataFunction={setShowData} />
+                <ShowData dataToShow={dataToShow} Shopname={Shopname} setDataFunction={setShowData} />
                 
-                <TouchableOpacity style={styles.signUpBtn}>
+                <TouchableOpacity style={styles.signUpBtn} onPress={handleFinishForm}>
                     <Text style={{textAlign:'center'}}>
                         Sign Up
                     </Text>

@@ -24,18 +24,7 @@ const Newpage = () =>{
         return true
     }
 
-    function handleNext(){
-        const data = {
-            'username' : username,
-            'email' : email,
-            'password' : password
-        }
-        if(checkInput(data)){
-            router.push('signUpForm')
-        }
-    }
-
-    async function handleSignup(){
+    async function handleNext(){
         const data = {
             'username' : username,
             'email' : email,
@@ -44,7 +33,7 @@ const Newpage = () =>{
         if (checkInput(data)){
             const response = await API.createUser(data)
             if (response){
-                router.push('/signUpForm')
+                router.push({pathname: '/signUpForm', params:{username : username}})
             }else{
                 console.log('failed')
                 Alert.alert('Signup Failed', 'Email or username is exist', 
