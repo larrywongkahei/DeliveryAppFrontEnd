@@ -12,6 +12,15 @@ const Newpage = () =>{
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
+    function checkDetailMatch(data1, data2, subject){
+        Alert.alert('Signup Failed', `${subject} not matched`, 
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        })
+        return data1 === data2;
+    }
+
     function checkInput(data){
         if (data.username === "" || data.email === "" || data.password === ""){
             Alert.alert('Signup Failed', 'Please fill in all the field', 
@@ -30,13 +39,13 @@ const Newpage = () =>{
             'email' : email,
             'password' : password
         }
-        if (checkInput(data)){
+        if (checkInput(data) && checkDetailMatch(password, confirmPassword, "Password")){
             const response = await API.createUser(data)
             if (response){
                 router.push({pathname: '/signUpForm', params:{username : username}})
             }else{
                 console.log('failed')
-                Alert.alert('Signup Failed', 'Email or username is exist', 
+                Alert.alert('Signup Failed', 'Email or username is used', 
                     {
                     text: 'Cancel',
                     onPress: () => console.log('Cancel Pressed'),

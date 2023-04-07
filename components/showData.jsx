@@ -12,9 +12,9 @@ const ShowData = props => {
 
     return (
         <View>
-            {dataToShow.map(each => {
+            {dataToShow.map((each, index) => {
                 return (
-                    <View style={{
+                    <View key={index} style={{
                         borderBottomWidth: 0.5,
                         paddingBottom: 30,
                     }}>
@@ -22,9 +22,9 @@ const ShowData = props => {
                             {each.day}
                         </Text>
                         <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-evenly", marginTop: 20, paddingBottom: 50 }}>
-                            {Shops.map(eachShop => {
+                            {Shops.map((eachShop, index) => {
                                 return (
-                                    <TouchableOpacity onPress={() => {
+                                    <TouchableOpacity  key={index} onPress={() => {
                                         const newShowList = [...dataToShow]
                                         const indexOfDayInShowDataList = dataToShow.indexOf(each)
                                         each.shopChosen = eachShop

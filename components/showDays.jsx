@@ -29,13 +29,12 @@ const ShowDays = props => {
             marginTop: 30,
             marginBottom: 40,
         }}>
-            {dayList.map(each => {
+            {dayList.map((each, index) => {
                 return (
-                    <TouchableOpacity onPress={() => {
+                    <TouchableOpacity  key={index} onPress={() => {
                         const newList = [...dayList]
                         each.value = !each.value
                         updateDataToShow()
-                        console.log(newList)
                     }}>
                         <Text style={[!each.value ? styles.days : styles.daysChosen]}>
                             {each.day}
