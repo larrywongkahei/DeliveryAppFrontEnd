@@ -8,17 +8,20 @@ const Newpage = () =>{
 
     const router = useRouter();
     const [email, setEmail] = useState("")
+    const [confirmEmail, setConfirmEmail] = useState("")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
     function checkDetailMatch(data1, data2, subject){
-        Alert.alert('Signup Failed', `${subject} not matched`, 
-        {
-          text: 'Cancel',
-          style: 'cancel',
-        })
-        return data1 === data2;
+        if  (data1 !== data2){
+            Alert.alert('Signup Failed', `${subject} not matched`, 
+            {
+              text: 'Cancel',
+              style: 'cancel',
+            })
+        }
+        return data1 === data2
     }
 
     function checkInput(data){
@@ -39,7 +42,7 @@ const Newpage = () =>{
             'email' : email,
             'password' : password
         }
-        if (checkInput(data) && checkDetailMatch(password, confirmPassword, "Password")){
+        if (checkInput(data) && checkDetailMatch(password, confirmPassword, "Password") && checkDetailMatch(email, confirmEmail, "Email")){
             const response = await API.createUser(data)
             if (response){
                 router.push({pathname: '/signUpForm', params:{username : username}})
@@ -74,6 +77,13 @@ const Newpage = () =>{
                     placeholder="Email address"
                     value={email}
                     onChangeText={(input) => {setEmail(input)}}/>
+
+                <TextInput style={styles.homeInput}
+                    placeholderTextColor="gray"
+                    placeholder="Confirm email address"
+                    value={confirmEmail}
+                    onChangeText={(input) => {setConfirmEmail(input)}}/>
+
 
                 <TextInput style={styles.homeInput}
                     placeholderTextColor="gray"
