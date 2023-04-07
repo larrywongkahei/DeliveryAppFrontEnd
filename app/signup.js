@@ -32,11 +32,11 @@ const Newpage = () =>{
         }
         if (checkInput(data)){
         const response = await API.createUser(data)
-        if (response){
+        if (response === 200){
             router.push('/signUpForm')
         }else{
             console.log('failed')
-            Alert.alert('Signup Failed', 'Wrong username or password', 
+            Alert.alert('Signup Failed', 'Email or username is exist', 
                 {
                   text: 'Cancel',
                   onPress: () => console.log('Cancel Pressed'),

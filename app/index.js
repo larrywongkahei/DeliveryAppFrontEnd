@@ -12,7 +12,7 @@ const Homepage = () => {
     
     function checkInput(data){
         if (data.username === "" || data.password === ""){
-            Alert.alert('Login Failed', 'username or password is empty', 
+            Alert.alert('Login Failed', 'Please fill in all the field', 
                 {
                   text: 'Cancel',
                   onPress: () => console.log('Cancel Pressed'),
