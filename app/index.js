@@ -9,12 +9,26 @@ const Homepage = () => {
     const router = useRouter();
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    
+    function checkInput(data){
+        if (data.username === "" || data.password === ""){
+            Alert.alert('Login Failed', 'username or password is empty', 
+                {
+                  text: 'Cancel',
+                  onPress: () => console.log('Cancel Pressed'),
+                  style: 'cancel',
+                })
+            return false
+        }
+        return true
+    }
 
     async function handleLogin(){
         const user = {
             "username" : username,
             "password" : password
         }
+        if (checkInput(user)){
         const response = await API.Login(user)
         if (response){
             router.replace('/shop')
@@ -26,7 +40,7 @@ const Homepage = () => {
                   style: 'cancel',
                 })}
     }
-
+    }
     return (
         <SafeAreaView style={{flex:1, backgroundColor:"#FFFFFF"}}>
             <Stack.Screen

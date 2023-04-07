@@ -12,12 +12,20 @@ const Newpage = () =>{
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
+    function checkInput(data){
+        if (data.username === "" || data.email === "" || data.password === ""){
+            return false
+        }
+        return true
+    }
+
     async function handleSignup(){
         const data = {
             'username' : username,
             'email' : email,
             'password' : password
         }
+        if (checkInput(data)){
         const response = await API.createUser(data)
         if (response){
             router.push('/signUpForm')
@@ -30,6 +38,7 @@ const Newpage = () =>{
                   style: 'cancel',
                 })}
     }
+}
     
     return (
         <SafeAreaView style={{flex:1, backgroundColor:"#FFFFFF"}}>
