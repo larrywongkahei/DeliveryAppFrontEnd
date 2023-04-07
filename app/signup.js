@@ -31,19 +31,19 @@ const Newpage = () =>{
             'password' : password
         }
         if (checkInput(data)){
-        const response = await API.createUser(data)
-        if (response === 200){
-            router.push('/signUpForm')
-        }else{
-            console.log('failed')
-            Alert.alert('Signup Failed', 'Email or username is exist', 
-                {
-                  text: 'Cancel',
-                  onPress: () => console.log('Cancel Pressed'),
-                  style: 'cancel',
-                })}
+            const response = await API.createUser(data)
+            if (response){
+                router.push('/signUpForm')
+            }else{
+                console.log('failed')
+                Alert.alert('Signup Failed', 'Email or username is exist', 
+                    {
+                    text: 'Cancel',
+                    onPress: () => console.log('Cancel Pressed'),
+                    style: 'cancel',
+                    })}
+        }
     }
-}
     
     return (
         <SafeAreaView style={{flex:1, backgroundColor:"#FFFFFF"}}>
