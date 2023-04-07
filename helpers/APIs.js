@@ -1,6 +1,6 @@
 const API = {
     createUser (newUser){
-        return fetch("http://127.0.0.1:8000/api/createuser", {
+        return fetch("http://192.168.0.2:3000/createuser", {
             method: "post",
             body: JSON.stringify(newUser),
             headers: {
@@ -8,7 +8,7 @@ const API = {
             }
         })
         .then(response => {
-            if (response.status === 201){
+            if (response.status === 200){
                 return true
             }else{
                 return false

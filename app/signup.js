@@ -13,22 +13,22 @@ const Newpage = () =>{
     const [confirmPassword, setConfirmPassword] = useState("")
 
     async function handleSignup(){
-        // const data = {
-        //     'username' : username,
-        //     'email' : email,
-        //     'password' : password
-        // }
-        // const response = await API.createUser(data)
-        // if (response){
+        const data = {
+            'username' : username,
+            'email' : email,
+            'password' : password
+        }
+        const response = await API.createUser(data)
+        if (response){
             router.push('/signUpForm')
-        // }else{
-        //     console.log('failed')
-        //     Alert.alert('Signup Failed', 'Wrong username or password', 
-        //         {
-        //           text: 'Cancel',
-        //           onPress: () => console.log('Cancel Pressed'),
-        //           style: 'cancel',
-        //         })}
+        }else{
+            console.log('failed')
+            Alert.alert('Signup Failed', 'Wrong username or password', 
+                {
+                  text: 'Cancel',
+                  onPress: () => console.log('Cancel Pressed'),
+                  style: 'cancel',
+                })}
     }
     
     return (
@@ -37,13 +37,6 @@ const Newpage = () =>{
             options={{
                 headerStyle:{backgroundColor:"#FFC0CB"},
                 headerTitle:"SignUp",
-                // headerRight: () => (
-                //     <TouchableOpacity>
-                //         <Text style={{fontSize:20, fontWeight:"bole"}}>
-                //             Next
-                //         </Text>
-                //     </TouchableOpacity>
-                // )
             }}
             />
             <View style={{gap:24, flex:1, justifyContent:"center", alignItems:"center"}}>

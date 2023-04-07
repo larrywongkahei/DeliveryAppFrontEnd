@@ -25,7 +25,6 @@ const ShowData = props => {
                             {Shops.map(eachShop => {
                                 return (
                                     <TouchableOpacity onPress={() => {
-                                        // const theDay = dayList.find(day => day.day === each)
                                         const newShowList = [...dataToShow]
                                         const indexOfDayInShowDataList = dataToShow.indexOf(each)
                                         each.shopChosen = eachShop
@@ -43,7 +42,6 @@ const ShowData = props => {
                         <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
 
                             <TouchableOpacity style={[each.shift === "Full" ? styles.shiftButtonChosen : styles.shiftButton]} onPress={() => {
-                                // const theDay = dayList.find(day => day.day === each)
                                 const newShowList = [...dataToShow]
                                 const indexOfDayInShowDataList = dataToShow.indexOf(each)
                                 each.shift = "Full"
@@ -56,7 +54,6 @@ const ShowData = props => {
                             </TouchableOpacity>
 
                             <TouchableOpacity style={[each.shift === "Half" ? styles.shiftButtonChosen : styles.shiftButton]} onPress={() => {
-                                // const theDay = dayList.find(day => day.day === each)
                                 const newShowList = [...dataToShow]
                                 const indexOfDayInShowDataList = dataToShow.indexOf(each)
                                 each.shift = "Half"

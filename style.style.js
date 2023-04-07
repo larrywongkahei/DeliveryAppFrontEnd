@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#50C878',
     },
     shiftText:{
-        fontSize:"large", 
+        fontSize:20, 
         fontWeight:"bold", 
         textAlign:"center", 
         marginTop:12

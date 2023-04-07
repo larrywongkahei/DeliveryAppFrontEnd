@@ -30,8 +30,7 @@ const SignUpForm = () => {
     }
 
     function setShowData(data){
-        // updateDataToShow()
-        console.log("1")
+        console.log(data)
         setData(data)
     }
 
@@ -41,7 +40,7 @@ const SignUpForm = () => {
                 <View style={{
                     borderBottomWidth:0.5,
                 }}>
-                    <Text style={{textAlign:"center", marginTop:30, fontSize:"large"}}>
+                    <Text style={{textAlign:"center", marginTop:30, fontSize:20}}>
                         Please choose the days you work
                     </Text>
 
@@ -59,7 +58,7 @@ const SignUpForm = () => {
                     sun={sun}
                     />
 
-                    <Text style={{textAlign:"center", marginTop:60, fontSize:"small", marginBottom:20}}>
+                    <Text style={{textAlign:"center", marginTop:60, fontSize:13, marginBottom:20}}>
                         If your work day is not fixed, press skip
                     </Text>
                 </View>
