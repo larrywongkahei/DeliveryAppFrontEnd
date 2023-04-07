@@ -24,6 +24,17 @@ const Newpage = () =>{
         return true
     }
 
+    function handleNext(){
+        const data = {
+            'username' : username,
+            'email' : email,
+            'password' : password
+        }
+        if(checkInput(data)){
+            router.push('signUpForm')
+        }
+    }
+
     async function handleSignup(){
         const data = {
             'username' : username,
@@ -82,7 +93,7 @@ const Newpage = () =>{
                     secureTextEntry={true}
                     />
 
-                <TouchableOpacity onPress={handleSignup} style={styles.signInOutBtn}>
+                <TouchableOpacity onPress={handleNext} style={styles.signInOutBtn}>
                     <Text>
                         Next
                     </Text>

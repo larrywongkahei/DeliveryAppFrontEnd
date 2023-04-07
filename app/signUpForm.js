@@ -63,6 +63,12 @@ const SignUpForm = () => {
                 </View>
 
                 <ShowData dataToShow={dataToShow} Shops={Shops} setDataFunction={setShowData} />
+                
+                <TouchableOpacity style={styles.signUpBtn}>
+                    <Text style={{textAlign:'center'}}>
+                        Sign Up
+                    </Text>
+                </TouchableOpacity>
 
             </ScrollView>
         </SafeAreaView>

@@ -74,8 +74,17 @@ const styles = StyleSheet.create({
         paddingBottom:25,
         textAlign:"center",
         backgroundColor:'#50C878',
-
-    }
+    },
+    signUpBtn:{
+        marginTop:30,
+        paddingHorizontal:20,
+        paddingVertical:10, 
+        borderRadius:30, 
+        width:100, 
+        backgroundColor:"#FFC0CB", 
+        flex:1,
+        alignSelf:'center'
+    },
 
 })
 
