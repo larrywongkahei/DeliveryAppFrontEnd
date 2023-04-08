@@ -1,13 +1,16 @@
 import { SafeAreaView, Text, View, TouchableOpacity, Image } from "react-native";
-import { Stack, useRouter } from "expo-router";
+import { Stack, useRouter, useSearchParams } from "expo-router";
 import styles from "../style.style";
 
 const Shops = () =>{
     const router = useRouter()
+    const params = useSearchParams()
 
-    function handleNav(name){
+    function handleNav(shopName){
         router.push({pathname:'/home', params:{
-            shop: name
+            shop: shopName,
+            name:params.name
+            
         }})
     }
 

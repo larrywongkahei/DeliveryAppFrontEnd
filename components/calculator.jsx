@@ -21,6 +21,25 @@ const Calculator = props => {
 
     const [position, setPosition] = useState(new Animated.Value(0));
 
+    function handleAddToLog(){
+        const date = new Date
+        const theDate = date.toISOString().slice(0, 10)
+        const theTime = date.toISOString().slice(11, 19)
+        const data = {
+            'name': props.name,
+            'data' : {
+                'date' : theDate,
+                'deliveries': [{
+                    'time': theTime,
+                    'slip': valueToAdd,
+                    'tips': (+selectedValue),
+                    'total': totalToAdd
+            }]
+            }
+            }
+            props.addToLog(data)
+        }
+
     function showTheCal () {
         setShowCal(!showCal)
         if(showCal){
@@ -91,7 +110,7 @@ const Calculator = props => {
                             </Text>
                         </View>
 
-                        <TouchableOpacity style={{backgroundColor:"#FFFF00", paddingLeft:50, paddingRight:50, justifyContent:'center'}}>
+                        <TouchableOpacity style={{backgroundColor:"#FFFF00", paddingLeft:50, paddingRight:50, justifyContent:'center'}} onPress={handleAddToLog}>
                             <Text>
                                 Add
                             </Text>
