@@ -18,7 +18,6 @@ const Calculator = props => {
         setTotalToAdd(valueToAdd + (+selectedValue))
     }, [valueToAdd, selectedValue])
 
-
     const [position, setPosition] = useState(new Animated.Value(0));
 
     function handleAddToLog(){
@@ -37,11 +36,15 @@ const Calculator = props => {
             }]
             }
             }
+            showTheCal()
             props.addToLog(data)
         }
 
     function showTheCal () {
         setShowCal(!showCal)
+        setSelectedValue(0)
+        setTotalToAdd(0)
+        setValueToAdd(0)
         if(showCal){
             Animated.spring(position, {
                 toValue: -450,
