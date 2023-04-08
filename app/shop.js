@@ -1,4 +1,4 @@
-import { SafeAreaView, Text, View, TouchableOpacity } from "react-native";
+import { SafeAreaView, Text, View, TouchableOpacity, Image } from "react-native";
 import { Stack, useRouter } from "expo-router";
 
 const Shops = () =>{
@@ -11,29 +11,33 @@ const Shops = () =>{
     }
 
     return (
-        <SafeAreaView style={{flex:0, marginVertical:'auto'}}>
+        <SafeAreaView style={{flex:0, alignItems:'center', marginTop:'25%', marginBottom:'auto'}}>
             <Stack.Screen 
             options={{
                 headerStyle:{backgroundColor:"#FFC0CB"},
                 headerTitle:"Shops"
             }}
             />
-            <View style={{flexDirection:"row", gap:10, justifyContent:"center"}}>
+            <View style={{}}>
+                <Text style={{fontSize:20}}>
+                    Today is not your ususal workday, please choose a shop for today.
+                </Text>
+            </View>
+            <View style={{flex:0, flexDirection:"row", gap:10, justifyContent:'space-evenly', alignItems:'center', marginTop:150, width:'100%'}}>
                 <TouchableOpacity onPress={()=>handleNav('BurgerMeatGrill')}>
-                    <Text>
-                        First shop image
-                    </Text>
+                    <Image source={require('../images/BurgerMeatsGrill.png')}/>
+
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={()=>handleNav('Happy House')}>
                     <Text>
-                        Second shop image
+                        HH
                     </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={()=>handleNav('New Orchid Garden')}>
                     <Text>
-                        Third shop image
+                        NOG
                     </Text>
                 </TouchableOpacity>
             </View>
