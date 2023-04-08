@@ -9,10 +9,10 @@ const Calculator = props => {
     const priceList = props.list
     const listBelow10 = []
 
-    const [selectedValue, setSelectedValue] = useState(0.1)
+    const [selectedValue, setSelectedValue] = useState(0)
     const [showCal, setShowCal] = useState(true)
     const [valueToAdd, setValueToAdd] = useState(0)
-    const [totalToAdd, setTotalToAdd] = useState(0.1)
+    const [totalToAdd, setTotalToAdd] = useState(0)
 
     useEffect(()=>{
         setTotalToAdd(valueToAdd + (+selectedValue))

@@ -38,7 +38,7 @@ const API = {
           }
         })
     },
-    GetWorkdays(name){
+    GetUser(name){
         return fetch('http://192.168.0.2:3000/'+ name, {
           method:'get'
         })
@@ -51,6 +51,9 @@ const API = {
             'Content-type': 'application/json'
           }
       })
+    },
+    GetDeliveries(){
+      return fetch('http://192.168.0.2:3000/deliveries')
     }
 }
 

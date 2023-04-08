@@ -10,14 +10,14 @@ const Homepage = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
-    const dayToWeekDay = {1:"Mon", 2:'Tue', 3:'Wed', 4:'Thu', 5:'Fri', 6:'Sat', 7:'Sun'}
+    const dayToWeekDay = {1:"Mon", 2:'Tue', 3:'Wed', 4:'Thu', 5:'Fri', 6:'Sat', 0:'Sun'}
     
     function checkWorkdaysContain(name){
         const date = new Date
-        API.GetWorkdays(name)
+        API.GetUser(name)
         .then(response => response.json())
         .then(data => {
-            const list = data.filter(each => each.weekday === dayToWeekDay[date.getDay()])
+            const list = data.workdays.filter(each => each.weekday === dayToWeekDay[date.getDay()])
             if (list.length > 0){
                 router.replace({pathname:'/home', params:{'name':username, 'shop':list[0].shop}})
             }else{

@@ -36,7 +36,7 @@ const SignUpForm = () => {
             API.UpdateUser(dataToUpdate)
             .then(response => {
                 if (response.status === 200){
-                    router.replace({pathname:'/home', params:{name:params.username}})
+                    router.replace('/')
                 }
             })
         }else{

@@ -7,7 +7,7 @@ const Shops = () =>{
     const params = useSearchParams()
 
     function handleNav(shopName){
-        router.push({pathname:'/home', params:{
+        router.replace({pathname:'/home', params:{
             shop: shopName,
             name:params.name
             
