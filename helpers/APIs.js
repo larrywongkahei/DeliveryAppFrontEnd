@@ -39,8 +39,17 @@ const API = {
         })
     },
     GetWorkdays(name){
-      return fetch('http://192.168.0.2:3000/'+ name)
-  },
+        return fetch('http://192.168.0.2:3000/'+ name)
+    },
+    AddToLog(data){
+      return fetch('http://192.168.0.2:3000/addDelivery'), {
+          method: "put",
+          body: JSON.stringify(data),
+          headers: {
+            'Content-type': 'application/json'
+          }
+      }
+    }
 }
 
 export default API

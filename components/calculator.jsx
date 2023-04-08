@@ -9,9 +9,15 @@ const Calculator = props => {
     const priceList = props.list
     const listBelow10 = []
 
-    const [selectedValue, setSelectedValue] = useState()
+    const [selectedValue, setSelectedValue] = useState(0.1)
     const [showCal, setShowCal] = useState(true)
     const [valueToAdd, setValueToAdd] = useState(0)
+    const [totalToAdd, setTotalToAdd] = useState(0.1)
+
+    useEffect(()=>{
+        setTotalToAdd(valueToAdd + (+selectedValue))
+    }, [valueToAdd, selectedValue])
+
 
     const [position, setPosition] = useState(new Animated.Value(0));
 
@@ -35,11 +41,11 @@ const Calculator = props => {
     for (let i = 0.1; i <= 6; i = i + 0.1) {
         if (i.toFixed(1) - Math.floor(i.toFixed(1)) == 0) {
             listBelow10.push(
-                <Picker.Item label={"£" + (i).toFixed(0)} value={i} />
+                <Picker.Item label={"£" + (i).toFixed(0)} value={(i).toFixed(0)} />
             )
         } else {
             listBelow10.push(
-                <Picker.Item label={"£" + (i).toFixed(1)} value={i} />
+                <Picker.Item label={"£" + (i).toFixed(1)} value={(i).toFixed(1)} />
             )
         }
     }
@@ -47,16 +53,53 @@ const Calculator = props => {
 
     return (
         <SafeAreaView style={{justifyContent:'flex-end', height:'141%'}}>
+
+            {/* Add Icon */}
             {showCal ? 
-            <TouchableOpacity onPress={showTheCal} style={{ alignItems:'center'}}>
+            <TouchableOpacity onPress={showTheCal} style={{ alignItems:'center', paddingBottom:30}}>
                 <Icon name="plus-circle" size={80}/>
             </TouchableOpacity> : null }
+
+            {/* Monitor */}
             <Animated.View style={{ transform: [{ translateY: position }], marginTop:30}}>
-                <View style={{ backgroundColor: '#000000', flexDirection: 'row-reverse', marginLeft: 10, marginRight: 10}}>
-                    <Text numberOfLines={1} style={{ fontSize: 40, color: "#FFC0CB", width: '80%', height: '100%', paddingTop: 25, paddingBottom: 25, textAlign:'right', marginRight:30}}>
-                        {valueToAdd}
-                    </Text>
+                <View style={{width:'100%', backgroundColor:'#000000'}}>
+                    <View style={{ backgroundColor: '#000000', flexDirection: 'row', justifyContent:'space-between'}}>
+                        <View style={{alignItems:'center'}}>
+                            <Text style={{ fontSize: 20, color: "#FFC0CB", paddingTop: 15, paddingBottom: 15, marginLeft:30}}>
+                                Slip:
+                            </Text>
+                            <Text style={{ fontSize: 20, color: "#FFC0CB", paddingTop: 15, paddingBottom: 15, marginLeft:30}}>
+                                £{valueToAdd}
+                            </Text>
+                        </View>
+
+                        <View style={{alignItems:'center'}}>
+                            <Text style={{ fontSize: 20, color: "#FFC0CB", paddingTop: 15, paddingBottom: 15}}>
+                                Tips:
+                            </Text>
+                            <Text style={{ fontSize: 20, color: "#FFC0CB", paddingTop: 15, paddingBottom: 15}}>
+                                £{selectedValue}
+                            </Text>
+                        </View>
+
+                        <View style={{alignItems:'center'}}>
+                            <Text style={{ fontSize: 20, color: "#FFC0CB", paddingTop: 15, paddingBottom: 15}}>
+                                Total:
+                            </Text>
+                            <Text style={{ fontSize: 20, color: "#FFC0CB", paddingTop: 15, paddingBottom: 15}}>
+                                £{totalToAdd}
+                            </Text>
+                        </View>
+
+                        <TouchableOpacity style={{backgroundColor:"#FFFF00", paddingLeft:50, paddingRight:50, justifyContent:'center'}}>
+                            <Text>
+                                Add
+                            </Text>
+                        </TouchableOpacity>
+                    </View>  
                 </View>
+
+                {/* Buttons */}
                 <View style={{ justifyContent: 'space-between', flexDirection: 'row', paddingBottom: 20 }}>
                     <View style={{ flexDirection: 'row', width: '65%', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
                         {priceList?.map((each, index) => {

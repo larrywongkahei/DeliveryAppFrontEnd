@@ -9,6 +9,10 @@ const Home = () => {
     const deliveryFeeList = {'BMG' : [2.5, 3, 3.5, 4], "HH" : [1.5, 2, 3, 3.5]}
     const params = useSearchParams()
 
+    function addToLog(){
+        
+    }
+
 
 
     return(
