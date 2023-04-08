@@ -1,5 +1,6 @@
 import { SafeAreaView, Text, View, TouchableOpacity, Image } from "react-native";
 import { Stack, useRouter } from "expo-router";
+import styles from "../style.style";
 
 const Shops = () =>{
     const router = useRouter()
@@ -23,7 +24,7 @@ const Shops = () =>{
                     Today is not your ususal workday, please choose a shop for today.
                 </Text>
             </View>
-            <View style={{flex:0, flexDirection:"row", gap:10, justifyContent:'space-evenly', alignItems:'center', marginTop:150, width:'100%'}}>
+            <View style={styles.shopsBtn}>
                 <TouchableOpacity onPress={()=>handleNav('BurgerMeatGrill')}>
                     <Image source={require('../images/BurgerMeatsGrill.png')}/>
 

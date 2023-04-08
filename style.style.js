@@ -84,7 +84,15 @@ const styles = StyleSheet.create({
         backgroundColor:"#FFC0CB", 
         flex:1,
         alignSelf:'center'
-    },
+    },shopsBtn:{
+        flex:0, 
+        flexDirection:"row",
+        gap:10,
+        justifyContent:'space-evenly',
+        alignItems:'center',
+        marginTop:150,
+        width:'100%'
+    }
 
 })
 

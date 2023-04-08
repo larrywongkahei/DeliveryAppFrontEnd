@@ -1,6 +1,4 @@
-import { Stack } from "expo-router";
 import { SafeAreaView, Text, View, TouchableOpacity, ScrollView } from "react-native";
-import { useState, useEffect } from "react";
 import styles from "../style.style";
 
 const ShowData = props => {
