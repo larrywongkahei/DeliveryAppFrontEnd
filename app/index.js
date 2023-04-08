@@ -9,6 +9,26 @@ const Homepage = () => {
     const router = useRouter();
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+
+    const dayToWeekDay = {1:"Mon", 2:'Tue', 3:'Wed', 4:'Thu', 5:'Fri', 6:'Sat', 7:'Sun'}
+    
+    function checkWorkdaysContain(name){
+        const date = new Date
+        console.log(dayToWeekDay[6])
+        API.GetWorkdays(name)
+        .then(response => response.json())
+        .then(data => {
+            const list = data.filter(each => each.weekday === dayToWeekDay[date.getDay()])
+            if (list.length > 0){
+                router.replace({pathname:'/home', params:{'name':username}})
+            }else{
+                router.replace({pathname:'/shop', params:{'name':username}})
+            }
+        })
+        
+    }
+
+
     
     function checkInput(data){
         if (data.username === "" || data.password === ""){
@@ -30,7 +50,7 @@ const Homepage = () => {
         if (checkInput(user)){
         const response = await API.Login(user)
         if (response){
-            router.replace('/shop')
+            checkWorkdaysContain(username)
         }else{
             Alert.alert('Login Failed', 'Wrong username or password', 
                 {

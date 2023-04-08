@@ -1,11 +1,13 @@
 import { SafeAreaView, View, Text } from "react-native";
 import { useSearchParams } from "expo-router";
 import { Stack } from "expo-router";
+import API from "../helpers/APIs";
 
 const Home = () => {
-
     const params = useSearchParams()
-    return (
+
+
+    return(
         <SafeAreaView>
             {params?
             <View>

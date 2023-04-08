@@ -24,6 +24,7 @@ const Newpage = () =>{
         return data1 === data2
     }
 
+
     function checkInput(data){
         if (data.username === "" || data.email === "" || data.password === ""){
             Alert.alert('Signup Failed', 'Please fill in all the field', 

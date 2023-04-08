@@ -37,7 +37,10 @@ const API = {
             'Content-type': 'application/json'
           }
         })
-    }
+    },
+    GetWorkdays(name){
+      return fetch('http://192.168.0.2:3000/'+ name)
+  },
 }
 
 export default API
