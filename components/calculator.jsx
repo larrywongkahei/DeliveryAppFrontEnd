@@ -37,7 +37,9 @@ const Calculator = props => {
             }
             }
             showTheCal()
-            props.addToLog(data)
+            if(totalToAdd !== 0){
+                props.addToLog(data)
+            }
         }
 
     function showTheCal () {

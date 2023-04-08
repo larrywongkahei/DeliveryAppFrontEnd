@@ -5,6 +5,7 @@ import { Stack } from "expo-router";
 import API from "../helpers/APIs";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Calculator from "../components/calculator";
+import WorkLog from "../components/workLog";
 
 const Home = () => {
     const deliveryFeeList = {'BMG' : [2.5, 3, 3.5, 4], "HH" : [1.5, 2, 3, 3.5], "NOG" : [2.5, 3, 3.5, 4]}
@@ -37,6 +38,9 @@ const Home = () => {
                 }}
                 />
             </View>: null}
+            <View>
+                <WorkLog />
+            </View>
             <View style={{}}>
                 <Calculator list={deliveryFeeList[params.shop]} addToLog={addToLog} name={params.name}/>
             </View>
