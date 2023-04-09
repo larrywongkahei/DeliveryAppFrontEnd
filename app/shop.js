@@ -1,10 +1,16 @@
 import { SafeAreaView, Text, View, TouchableOpacity, Image } from "react-native";
 import { Stack, useRouter, useSearchParams } from "expo-router";
+import API from "../helpers/APIs";
 import styles from "../style.style";
+import { useState } from "react";
+import ChooseTodayWork from "../components/chooseTodayWork";
+import { add } from "react-native-reanimated";
 
 const Shops = () =>{
     const router = useRouter()
     const params = useSearchParams()
+    const date = new Date
+    const theDate = date.toISOString().slice(0, 10)
 
     function handleNav(shopName){
         router.replace({pathname:'/home', params:{
@@ -14,37 +20,21 @@ const Shops = () =>{
         }})
     }
 
+    async function addToLog(data){
+        await API.AddToLog(data)
+        handleNav(data.data.shop)
+
+    }
+
     return (
-        <SafeAreaView style={{flex:0, alignItems:'center', marginTop:'25%', marginBottom:'auto'}}>
+        <SafeAreaView>
             <Stack.Screen 
             options={{
                 headerStyle:{backgroundColor:"#FFC0CB"},
                 headerTitle:"Shops"
             }}
             />
-            <View style={{}}>
-                <Text style={{fontSize:20}}>
-                    Today is not your ususal workday, please choose a shop for today.
-                </Text>
-            </View>
-            <View style={styles.shopsBtn}>
-                <TouchableOpacity onPress={()=>handleNav('BurgerMeatGrill')}>
-                    <Image source={require('../images/BurgerMeatsGrill.png')}/>
-
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={()=>handleNav('Happy House')}>
-                    <Text>
-                        HH
-                    </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={()=>handleNav('New Orchid Garden')}>
-                    <Text>
-                        NOG
-                    </Text>
-                </TouchableOpacity>
-            </View>
+            <ChooseTodayWork handleNav={handleNav} theDate={theDate} addToLog={addToLog} name={params.name}/>
         </SafeAreaView>
     )
 }

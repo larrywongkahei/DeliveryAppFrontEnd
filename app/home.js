@@ -8,7 +8,7 @@ import Calculator from "../components/calculator";
 import WorkLog from "../components/workLog";
 
 const Home = () => {
-    const deliveryFeeList = {'BMG' : [2.5, 3, 3.5, 4], "HH" : [1.5, 2, 3, 3.5], "NOG" : [2.5, 3, 3.5, 4]}
+    const deliveryFeeList = {'BurgerMeatGrill' : [2.5, 3, 3.5, 4], 'Happy House' : [1.5, 2, 3, 3.5], 'New Orchid Garden' : [2.5, 3, 3.5, 4]}
     const params = useSearchParams()
     const [workLog, setWorkLog] = useState([])
     const [userID, setUserID] = useState("")
@@ -17,8 +17,10 @@ const Home = () => {
         API.GetUser(params.name)
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             setUserID(data._id)
             const logToSave = data.deliveries.find(each => each.date === params.date)
+            console.log(logToSave)
             setWorkLog(logToSave)
             
         })

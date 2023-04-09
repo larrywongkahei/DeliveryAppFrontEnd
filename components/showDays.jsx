@@ -32,7 +32,6 @@ const ShowDays = props => {
             {dayList.map((each, index) => {
                 return (
                     <TouchableOpacity  key={index} onPress={() => {
-                        const newList = [...dayList]
                         each.value = !each.value
                         updateDataToShow()
                     }}>

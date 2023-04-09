@@ -11,15 +11,19 @@ const Homepage = () => {
     const [password, setPassword] = useState("")
 
     const dayToWeekDay = {1:"Mon", 2:'Tue', 3:'Wed', 4:'Thu', 5:'Fri', 6:'Sat', 0:'Sun'}
+    const changeShopName = {"BMG" : 'BurgerMeatGrill', "HH" : 'Happy House', "NOG" : 'New Orchid Garden'}
     
     function checkWorkdaysContain(name){
         const date = new Date
+        const today = date.toISOString().slice(0, 10)
         API.GetUser(name)
         .then(response => response.json())
         .then(data => {
             const list = data.workdays.filter(each => each.weekday === dayToWeekDay[date.getDay()])
-            if (list.length > 0){
-                router.replace({pathname:'/home', params:{'name':username, 'shop':list[0].shop, 'date':date.toISOString().slice(0, 10)}})
+            const deliveryList = data.deliveries.filter(each => each.date === today)
+            console.log(deliveryList[0].shop)
+            if (list.length > 0 || deliveryList.length > 0){
+                router.replace({pathname:'/home', params:{'name':username, 'shop':changeShopName[list[0]?.shop] || changeShopName[deliveryList[0]?.shop], 'date':today}})
             }else{
                 router.replace({pathname:'/shop', params:{'name':username}})
             }
