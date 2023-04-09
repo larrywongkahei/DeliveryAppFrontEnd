@@ -22,9 +22,9 @@ const Homepage = () => {
             const list = data.workdays.filter(each => each.weekday === dayToWeekDay[date.getDay()])
             const deliveryList = data.deliveries.filter(each => each.date === today)
             console.log('the list is ' + list)
-            console.log('the delilist is ' + deliveryList[0]?.shop)
+            console.log('the delilist is ' + deliveryList[0])
             if (list.length > 0 || deliveryList.length > 0){
-                router.replace({pathname:'/home', params:{'name':username, 'shop':changeShopName[list[0]?.shop] || deliveryList[0]?.shop, 'date':today}})
+                router.replace({pathname:'/home', params:{'name':username, 'shop':changeShopName[list[0]?.shop] || deliveryList[0]?.shop, 'date':today}, 'shift' : deliveryList[0]?.shift})
             }else{
                 router.replace({pathname:'/shop', params:{'name':username}})
             }

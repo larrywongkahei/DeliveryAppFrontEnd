@@ -27,6 +27,8 @@ const Calculator = props => {
         const data = {
             'name': props.name,
             'data' : {
+                'shop' : props.shop,
+                'shift' : props.shift,
                 'date' : theDate,
                 'deliveries': [{
                     'time': theTime,

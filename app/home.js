@@ -23,7 +23,6 @@ const Home = () => {
             
         })
     }, [])
-    console.log(params)
 
     async function deleteDelivery (data){
         await API.DeleteDelivery(data)
@@ -71,7 +70,7 @@ const Home = () => {
                 <WorkLog workLog={workLog} deleteDelivery={deleteDelivery} userID={userID}/>
             </View> : null}
             <View style={{position:'absolute', bottom:'-60%', alignSelf:'center'}}>
-                <Calculator list={deliveryFeeList[params.shop]} addToLog={addToLog} name={params.name}/>
+                <Calculator list={deliveryFeeList[params.shop]} addToLog={addToLog} name={params.name} shop={params.shop}/>
             </View>
         </SafeAreaView>
     )

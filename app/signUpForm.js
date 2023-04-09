@@ -40,7 +40,7 @@ const SignUpForm = () => {
                 }
             })
         }else{
-            Alert.alert('Signup Failed', 'Please choose the shop and shift for each day', 
+            Alert.alert('Signup Failed', 'Please choose the shift for work days', 
             {
               text: 'Cancel',
               style: 'cancel',
@@ -106,7 +106,7 @@ const SignUpForm = () => {
                     />
 
                     <Text style={{textAlign:"center", marginTop:60, fontSize:13, marginBottom:20}}>
-                        If your work day is not fixed, press skip
+                        If your some of your work days are not fixed, Choose those's fixed and press signup
                     </Text>
                 </View>
 
