@@ -3,9 +3,13 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import styles from "../style.style";
 
 const WorkLog = props => {
+
+    const reverseList = props.workLog.deliveries?.reverse()
+
     return (
-        <SafeAreaView style={{flex:0}}>
-            {props.workLog.deliveries?.map((each, index) => {
+        <SafeAreaView style={{}}>
+            <ScrollView>
+            {reverseList?.map((each, index) => {
                 return (
                     <View key={index} style={{flex:0, flexDirection:'row', justifyContent:'space-between', backgroundColor:"#FFC0CB", marginTop:15, marginLeft:10, marginRight:10, padding:10}}>
 
@@ -51,6 +55,7 @@ const WorkLog = props => {
                     </View>
                 )
             })}
+            </ScrollView>
         </SafeAreaView>
     )
 }

@@ -76,7 +76,7 @@ const Calculator = props => {
 
 
     return (
-        <SafeAreaView style={{justifyContent:'flex-end', height:'116%'}}>
+        <SafeAreaView style={{}}>
 
             {/* Add Icon */}
             {showCal ? 

@@ -22,14 +22,25 @@ const Home = () => {
         })
     }, [])
 
-    function addToLog(data){
-        API.AddToLog(data)
+    async function addToLog(data){
+        await API.AddToLog(data)
+        await updateData()
     }
+
+    function updateData(){
+        API.GetUser(params.name)
+        .then(response => response.json())
+        .then(data => {
+            const logToSave = data.deliveries.find(each => each.date === params.date)
+            setWorkLog(logToSave)
+            
+    })
+}
 
 
 
     return(
-        <SafeAreaView style={{flex:0}}>
+        <SafeAreaView style={{flex:0, height:'100%'}}>
             {params?
             <View>
                 <Stack.Screen
@@ -42,10 +53,10 @@ const Home = () => {
                 }}
                 />
             </View>: null}
-            <View>
+            <View style={{height:'51%'}}>
                 <WorkLog workLog={workLog}/>
             </View>
-            <View style={{}}>
+            <View style={{position:'absolute', bottom:'-60%', alignSelf:'center'}}>
                 <Calculator list={deliveryFeeList[params.shop]} addToLog={addToLog} name={params.name}/>
             </View>
         </SafeAreaView>
