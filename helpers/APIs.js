@@ -52,9 +52,15 @@ const API = {
           }
       })
     },
-    GetDeliveries(){
-      return fetch('http://192.168.0.2:3000/deliveries')
-    }
+    DeleteDelivery(data){
+      return fetch('http://192.168.0.2:3000/deleteDelivery', {
+          method: "put",
+          body: JSON.stringify(data),
+          headers: {
+            'Content-type': 'application/json'
+          }
+      })
+    },
 }
 
 export default API

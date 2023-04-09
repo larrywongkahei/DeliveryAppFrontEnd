@@ -11,16 +11,25 @@ const Home = () => {
     const deliveryFeeList = {'BMG' : [2.5, 3, 3.5, 4], "HH" : [1.5, 2, 3, 3.5], "NOG" : [2.5, 3, 3.5, 4]}
     const params = useSearchParams()
     const [workLog, setWorkLog] = useState([])
+    const [userID, setUserID] = useState("")
 
     useEffect(() => {
         API.GetUser(params.name)
         .then(response => response.json())
         .then(data => {
+            console.log(data)
+            setUserID(data._id)
             const logToSave = data.deliveries.find(each => each.date === params.date)
             setWorkLog(logToSave)
             
         })
     }, [])
+
+    async function deleteDelivery (data){
+        await API.DeleteDelivery(data)
+        console.log(data)
+        
+    }
 
     async function addToLog(data){
         await API.AddToLog(data)
@@ -53,9 +62,10 @@ const Home = () => {
                 }}
                 />
             </View>: null}
+            {workLog ? 
             <View style={{height:'51%'}}>
-                <WorkLog workLog={workLog}/>
-            </View>
+                <WorkLog workLog={workLog} deleteDelivery={deleteDelivery} userID={userID}/>
+            </View> : null}
             <View style={{position:'absolute', bottom:'-60%', alignSelf:'center'}}>
                 <Calculator list={deliveryFeeList[params.shop]} addToLog={addToLog} name={params.name}/>
             </View>

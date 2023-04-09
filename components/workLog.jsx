@@ -6,6 +6,14 @@ const WorkLog = props => {
 
     const reverseList = props.workLog.deliveries?.reverse()
 
+    function handleDelete(dataToDelete){
+        const data = {
+            'id':props.userID,
+            'data':dataToDelete
+        }
+        props.deleteDelivery(data)
+    }
+
     return (
         <SafeAreaView style={{}}>
             <ScrollView>
@@ -48,9 +56,9 @@ const WorkLog = props => {
                                 {each.total}
                             </Text>
                         </View>
-                        <View style={{justifyContent:'center'}}>
+                        <TouchableOpacity style={{justifyContent:'center'}} onPress={() => {handleDelete(each)}}>
                             <Icon name="delete" size={28}/>
-                        </View>
+                        </TouchableOpacity>
 
                     </View>
                 )
@@ -59,5 +67,6 @@ const WorkLog = props => {
         </SafeAreaView>
     )
 }
+
 
 export default WorkLog;
