@@ -5,18 +5,15 @@ import styles from "../style.style";
 import { add } from "react-native-reanimated";
 
 const ChooseTodayWork = props => {
-
-    const BMG = {'name':'BMG', 'Full' : "17:00 - 23:00", 'Half' : "17:30 - 21:30"}
-    const NOG = {'name':'NOG', 'Full' : "16:30 - 23:00", 'Half' : "16:00 - 21:00"}
-    const HH = {'name':'HH', 'Full' : "16:30 - 23:00", 'Half' : "16:00 - 21:00"}
-
     const [shopChosen, setShopChosen] = useState("")
     const [shiftChosen, setShiftChosen] = useState("")
+    const changeShopName = {"BMG" : 'BurgerMeatGrill', "HH" : 'Happy House', "NOG" : 'New Orchid Garden'}
+
 
     const data = {
         'name': props.name,
         'data' : {
-            'shop': shopChosen,
+            'shop': changeShopName[shopChosen],
             'shift': shiftChosen,
             'date' : props.theDate,
             'deliveries': []
@@ -36,33 +33,34 @@ const ChooseTodayWork = props => {
                 </Text>
             </View>
             <View style={styles.shopsBtn}>
-                <TouchableOpacity onPress={() => setShopChosen('BMG')}>
-                    <Image source={require('../images/BurgerMeatsGrill.png')} />
-
+                <TouchableOpacity onPress={() => setShopChosen('BMG')} style={[shopChosen === 'BMG' ? styles.shopChosen : styles.shopButton]}>
+                    <Text style={{textAlign:'center'}}>
+                        BMG
+                    </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => setShopChosen('HH')}>
-                    <Text>
+                <TouchableOpacity onPress={() => setShopChosen('HH')} style={[shopChosen === 'HH' ? styles.shopChosen : styles.shopButton]}>
+                    <Text style={{textAlign:'center'}}>
                         HH
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => setShopChosen('NOG')}>
-                    <Text>
+                <TouchableOpacity onPress={() => setShopChosen('NOG')} style={[shopChosen === 'NOG' ? styles.shopChosen : styles.shopButton]}>
+                    <Text style={{textAlign:'center'}}>
                         NOG
                     </Text>
                 </TouchableOpacity>
             </View>
             {shopChosen ?
-            <View style={{flex:0, flexDirection:'row', gap:20}}>
+            <View style={{flex:0, flexDirection:'row', gap:20, textAlign:'center'}}>
                 <TouchableOpacity style={[shiftChosen === "Full" ? styles.shiftButtonChosen : styles.shiftButton]} onPress={()=>{setShiftChosen('Full')}}>
-                    <Text>
+                    <Text style={styles.shiftText}>
                         Full
                     </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={[shiftChosen === "Half" ? styles.shiftButtonChosen : styles.shiftButton]} onPress={()=>{setShiftChosen('Half')}}>
-                    <Text>
+                    <Text style={styles.shiftText}>
                         Half
                     </Text> 
                 </TouchableOpacity>
