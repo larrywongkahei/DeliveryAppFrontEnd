@@ -13,6 +13,9 @@ const Home = () => {
     const [workLog, setWorkLog] = useState([])
     const [userID, setUserID] = useState("")
 
+    console.log(params.shop)
+    console.log(params.shift)
+
     useEffect(() => {
         API.GetUser(params.name)
         .then(response => response.json())
@@ -70,7 +73,7 @@ const Home = () => {
                 <WorkLog workLog={workLog} deleteDelivery={deleteDelivery} userID={userID}/>
             </View> : null}
             <View style={{position:'absolute', bottom:'-60%', alignSelf:'center'}}>
-                <Calculator list={deliveryFeeList[params.shop]} addToLog={addToLog} name={params.name} shop={params.shop}/>
+                <Calculator list={deliveryFeeList[params.shop]} addToLog={addToLog} name={params.name} shop={params.shop} shift={params.shift}/>
             </View>
         </SafeAreaView>
     )
