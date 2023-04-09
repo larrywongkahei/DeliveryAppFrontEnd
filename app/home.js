@@ -15,7 +15,11 @@ const Home = () => {
     useEffect(() => {
         API.GetUser(params.name)
         .then(response => response.json())
-        .then(data => {setWorkLog(data.deliveries)})
+        .then(data => {
+            const logToSave = data.deliveries.find(each => each.date === params.date)
+            setWorkLog(logToSave)
+            
+        })
     }, [])
 
     function addToLog(data){
@@ -25,7 +29,7 @@ const Home = () => {
 
 
     return(
-        <SafeAreaView style={{flex:0, justifyContent:'flex-end'}}>
+        <SafeAreaView style={{flex:0}}>
             {params?
             <View>
                 <Stack.Screen
@@ -39,7 +43,7 @@ const Home = () => {
                 />
             </View>: null}
             <View>
-                <WorkLog />
+                <WorkLog workLog={workLog}/>
             </View>
             <View style={{}}>
                 <Calculator list={deliveryFeeList[params.shop]} addToLog={addToLog} name={params.name}/>

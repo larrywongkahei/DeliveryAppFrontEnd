@@ -19,7 +19,7 @@ const Homepage = () => {
         .then(data => {
             const list = data.workdays.filter(each => each.weekday === dayToWeekDay[date.getDay()])
             if (list.length > 0){
-                router.replace({pathname:'/home', params:{'name':username, 'shop':list[0].shop}})
+                router.replace({pathname:'/home', params:{'name':username, 'shop':list[0].shop, 'date':date.toISOString().slice(0, 10)}})
             }else{
                 router.replace({pathname:'/shop', params:{'name':username}})
             }
