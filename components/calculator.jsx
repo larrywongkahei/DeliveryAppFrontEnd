@@ -125,7 +125,7 @@ const Calculator = props => {
 
                 {/* Buttons */}
                 <View style={{ justifyContent: 'space-between', flexDirection: 'row', paddingBottom: 20 }}>
-                    <View style={{ flexDirection: 'row', width: '65%', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
+                    <View style={{ flexDirection: 'row', width: '69%', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
                         {priceList?.map((each, index) => {
                             return (
                                 <TouchableOpacity key={index} style={{ width: '35%', borderRadius: '100%', backgroundColor: '#FF5733', marginTop: 50, paddingTop: 39, paddingBottom: 39 }} onPress={() => setValueToAdd(valueToAdd + each)}>

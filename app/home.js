@@ -17,7 +17,6 @@ const Home = () => {
         API.GetUser(params.name)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             setUserID(data._id)
             const logToSave = data.deliveries.find(each => each.date === params.date)
             setWorkLog(logToSave)
@@ -27,7 +26,11 @@ const Home = () => {
 
     async function deleteDelivery (data){
         await API.DeleteDelivery(data)
-        console.log(data)
+        .then(res => {
+            if (res.status === 200){
+                updateData()
+            }
+        })
         
     }
 
