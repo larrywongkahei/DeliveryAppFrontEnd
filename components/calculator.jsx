@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import styles from "../style.style";
 import { Picker } from '@react-native-picker/picker';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import API from "../helpers/APIs";
 
 
 const Calculator = props => {
@@ -13,6 +14,7 @@ const Calculator = props => {
     const [showCal, setShowCal] = useState(true)
     const [valueToAdd, setValueToAdd] = useState(0)
     const [totalToAdd, setTotalToAdd] = useState(0)
+    const [slipsCountArray, setSlipsCountArray] = useState([])
 
     useEffect(()=>{
         setTotalToAdd(valueToAdd + (+selectedValue))
@@ -39,6 +41,7 @@ const Calculator = props => {
             }
             }
             showTheCal()
+            getSlipsCount()
             if(totalToAdd !== 0){
                 props.addToLog(data)
             }
@@ -64,6 +67,20 @@ const Calculator = props => {
         }
     }
 
+    async function getSlipsCount(){
+        const response = await API.GetUser(props.name)
+        const data = await response.json()
+        const slipsDict = {}
+        priceList.forEach(each => {
+            slipsDict[each] = 0
+        })
+        const allDeliveries = data.deliveries[0].deliveries
+        allDeliveries.forEach(each => {
+            slipsDict[each.slip] += 1
+        })
+        setSlipsCountArray(slipsDict)
+    }
+
     for (let i = 0.1; i <= 6; i = i + 0.1) {
         if (i.toFixed(1) - Math.floor(i.toFixed(1)) == 0) {
             listBelow10.push(
@@ -84,7 +101,11 @@ const Calculator = props => {
             {showCal ? 
             <TouchableOpacity onPress={showTheCal} style={{ alignItems:'center', paddingBottom:30}}>
                 <Icon name="plus-circle" size={80}/>
-            </TouchableOpacity> : null }
+            </TouchableOpacity> : 
+            <View>
+
+            </View>
+            }
 
             {/* Monitor */}
             <Animated.View style={{ transform: [{ translateY: position }], marginTop:30}}>
@@ -130,7 +151,7 @@ const Calculator = props => {
                     <View style={{ flexDirection: 'row', width: '69%', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
                         {priceList?.map((each, index) => {
                             return (
-                                <TouchableOpacity key={index} style={{ width: '35%', borderRadius: '100%', backgroundColor: '#FF5733', marginTop: 50, paddingTop: 39, paddingBottom: 39 }} onPress={() => setValueToAdd(valueToAdd + each)}>
+                                <TouchableOpacity key={index} style={{ width: '35%', borderRadius: '100%', backgroundColor: '#FF5733', marginTop: 50, paddingTop: 39, paddingBottom: 39 }} onPress={() => setValueToAdd(each)}>
                                     <Text style={{ textAlign: 'center' }}>
                                         {each}
                                     </Text>

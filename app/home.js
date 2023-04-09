@@ -13,9 +13,6 @@ const Home = () => {
     const [workLog, setWorkLog] = useState([])
     const [userID, setUserID] = useState("")
 
-    console.log(params.shop)
-    console.log(params.shift)
-
     useEffect(() => {
         API.GetUser(params.name)
         .then(response => response.json())
@@ -51,6 +48,7 @@ const Home = () => {
             
     })
 }
+
 
 
 

@@ -5,7 +5,6 @@ import styles from "../style.style";
 const WorkLog = props => {
 
     const reverseList = props.workLog.deliveries?.reverse()
-    console.log(reverseList)
 
     function handleDelete(dataToDelete){
         const data = {
