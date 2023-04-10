@@ -32,6 +32,7 @@ const Calculator = props => {
                 'shop' : props.shop,
                 'shift' : props.shift,
                 'date' : theDate,
+                'total' : totalToAdd,
                 'deliveries': [{
                     'time': theTime,
                     'slip': valueToAdd,
@@ -103,7 +104,7 @@ const Calculator = props => {
                 <Icon name="plus-circle" size={80}/>
             </TouchableOpacity> : 
             <View>
-
+                
             </View>
             }
 

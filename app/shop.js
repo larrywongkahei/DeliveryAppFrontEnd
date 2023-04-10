@@ -15,7 +15,8 @@ const Shops = () =>{
     function handleNav(shopName){
         router.replace({pathname:'/home', params:{
             shop: shopName,
-            name:params.name
+            name:params.name,
+            date: theDate
             
         }})
     }

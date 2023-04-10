@@ -19,7 +19,7 @@ const Home = () => {
         .then(data => {
             setUserID(data._id)
             const logToSave = data.deliveries.find(each => each.date === params.date)
-            setWorkLog(logToSave)
+            setWorkLog(logToSave || [])
             
         })
     }, [])
@@ -36,7 +36,9 @@ const Home = () => {
 
     async function addToLog(data){
         await API.AddToLog(data)
+        console.log(data)
         await updateData()
+        console.log(workLog)
     }
 
     function updateData(){
@@ -44,6 +46,9 @@ const Home = () => {
         .then(response => response.json())
         .then(data => {
             const logToSave = data.deliveries.find(each => each.date === params.date)
+            console.log(params.date)
+            console.log(data)
+            console.log(logToSave)
             setWorkLog(logToSave)
             
     })

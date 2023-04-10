@@ -46,7 +46,7 @@ const Newpage = () =>{
         if (checkInput(data) && checkDetailMatch(password, confirmPassword, "Password") && checkDetailMatch(email, confirmEmail, "Email")){
             const response = await API.createUser(data)
             if (response){
-                router.push({pathname: '/signUpForm', params:{username : username}})
+                router.replace({pathname: '/signUpForm', params:{username : username}})
             }else{
                 Alert.alert('Signup Failed', 'Email or username is used', 
                     {

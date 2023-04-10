@@ -102,7 +102,7 @@ const Homepage = () => {
                 <Text>
                     Dont't have an account?
                 </Text>
-                <TouchableOpacity onPress={()=>{router.push('/signup')}} style={{}}>
+                <TouchableOpacity onPress={()=>{router.replace('/signup')}} style={{}}>
                     <Text style={{textAlign:"center", marginBottom:10, color:"#FC6C85"}}>
                         Sign Up
                     </Text>
