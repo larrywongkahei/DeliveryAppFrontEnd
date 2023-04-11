@@ -4,10 +4,6 @@ import styles from "../style.style";
 
 const DayEarn = props => {
 
-    console.log(props.totalEarning)
-
-
-
     return(
 
         <View style={{backgroundColor:"#FFC0CB", height:'100%'}}>

@@ -33,10 +33,11 @@ const Home = () => {
         setSlipsTotal(slipTotal)
     }
 
-    async function deleteDelivery (data){
-        await API.DeleteDelivery(data)
+    function deleteDelivery (data){
+        API.DeleteDelivery(data)
         .then(res => {
             if (res.status === 200){
+                console.log(res.status)
                 updateData()
             }
         })
@@ -51,9 +52,10 @@ const Home = () => {
         API.GetUser(params.name)
         .then(response => response.json())
         .then(data => {
+            console.log(data.deliveries[0].total)
             const logToSave = data.deliveries.find(each => each.date === params.date)
             setWorkLog(logToSave)
-            setTotalEarning(data.total)
+            setTotalEarning(data.deliveries[0].total)
             getSlipsCount(data)
             setUserID(data._id)
             
