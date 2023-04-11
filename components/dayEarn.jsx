@@ -6,7 +6,7 @@ const DayEarn = props => {
 
     return(
 
-        <View style={{backgroundColor:"#FFC0CB", height:'100%'}}>
+        <View style={{backgroundColor:"#FFC0CB", height:'100%', justifyContent:'space-around'}}>
             <Text style={{alignSelf:'center', fontSize:20}}>
                 Slips Count: 
             </Text>
@@ -24,14 +24,14 @@ const DayEarn = props => {
                     )
                 })}
                 </View>
-                <Text style={{textAlign:'center', fontSize:18, marginTop:16}}>
+                <Text style={{textAlign:'center', fontSize:20, marginTop:16}}>
                     Slips Total = £  {props.slipsTotal}
                 </Text>
-                <Text>
-                    Tips count: {}
+                <Text style={{textAlign:'center', fontSize:20, marginTop:16}}>
+                    Tips count: £  {(props.totalEarning - props.slipsTotal).toFixed(1)}
                 </Text>
-                <Text>
-                    Today's earn: £  {props.totalEarning}
+                <Text style={{textAlign:'center', fontSize:20, marginTop:16}}>
+                    Today's earn: £  {props.totalEarning.toFixed(1)}
                 </Text>
         </View>
     )

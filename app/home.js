@@ -16,6 +16,8 @@ const Home = () => {
     const [userID, setUserID] = useState("")
     const [totalEarning, setTotalEarning] = useState(0)
     const [slipsTotal, setSlipsTotal] = useState(0)
+    const [showCal, setShowCal] = useState(true)
+
 
 
 
@@ -31,6 +33,10 @@ const Home = () => {
             }
         }
         setSlipsTotal(slipTotal)
+    }
+
+    function setShowCalFun () {
+        setShowCal(!showCal)
     }
 
     function deleteDelivery (data){
@@ -52,7 +58,6 @@ const Home = () => {
         API.GetUser(params.name)
         .then(response => response.json())
         .then(data => {
-            console.log(data.deliveries[0].total)
             const logToSave = data.deliveries.find(each => each.date === params.date)
             setWorkLog(logToSave)
             setTotalEarning(data.deliveries[0].total)
@@ -98,11 +103,12 @@ async function getSlipsCount(data){
             <View style={{height:'51%'}}>
                 <WorkLog workLog={workLog} deleteDelivery={deleteDelivery} userID={userID}/>
             </View> : null}
+            {showCal ? 
             <View style={{height:'37%', marginTop:20}}>
                 <DayEarn slipsCountDict={slipsCountDict} totalEarning={totalEarning} slipsTotal={slipsTotal}/>
-            </View>
+            </View> : null}
             <View style={{position:'absolute', bottom:'-60%', alignSelf:'center'}}>
-                <Calculator list={deliveryFeeList[params.shop]} addToLog={addToLog} name={params.name} shop={params.shop} shift={params.shift}/>
+                <Calculator list={deliveryFeeList[params.shop]} addToLog={addToLog} name={params.name} shop={params.shop} shift={params.shift} setShowCalFun={setShowCalFun}/>
             </View>
         </SafeAreaView>
     )

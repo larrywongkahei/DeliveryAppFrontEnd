@@ -48,6 +48,7 @@ const Calculator = props => {
 
     function showTheCal () {
         setShowCal(!showCal)
+        props.setShowCalFun()
         setSelectedValue(0)
         setTotalToAdd(0)
         setValueToAdd(0)
