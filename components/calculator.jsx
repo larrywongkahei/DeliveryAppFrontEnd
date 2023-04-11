@@ -14,7 +14,6 @@ const Calculator = props => {
     const [showCal, setShowCal] = useState(true)
     const [valueToAdd, setValueToAdd] = useState(0)
     const [totalToAdd, setTotalToAdd] = useState(0)
-    const [slipsCountArray, setSlipsCountArray] = useState([])
 
     useEffect(()=>{
         setTotalToAdd(valueToAdd + (+selectedValue))
@@ -42,7 +41,6 @@ const Calculator = props => {
             }
             }
             showTheCal()
-            getSlipsCount()
             if(totalToAdd !== 0){
                 props.addToLog(data)
             }
@@ -68,19 +66,7 @@ const Calculator = props => {
         }
     }
 
-    async function getSlipsCount(){
-        const response = await API.GetUser(props.name)
-        const data = await response.json()
-        const slipsDict = {}
-        priceList.forEach(each => {
-            slipsDict[each] = 0
-        })
-        const allDeliveries = data.deliveries[0].deliveries
-        allDeliveries.forEach(each => {
-            slipsDict[each.slip] += 1
-        })
-        setSlipsCountArray(slipsDict)
-    }
+
 
     for (let i = 0.1; i <= 6; i = i + 0.1) {
         if (i.toFixed(1) - Math.floor(i.toFixed(1)) == 0) {
@@ -100,13 +86,9 @@ const Calculator = props => {
 
             {/* Add Icon */}
             {showCal ? 
-            <TouchableOpacity onPress={showTheCal} style={{ alignItems:'center', paddingBottom:30}}>
-                <Icon name="plus-circle" size={80}/>
-            </TouchableOpacity> : 
-            <View>
-                
-            </View>
-            }
+                <TouchableOpacity onPress={showTheCal} style={{ alignItems:'center', paddingBottom:30}}>
+                    <Icon name="plus-circle" size={80}/>
+                </TouchableOpacity> : null}
 
             {/* Monitor */}
             <Animated.View style={{ transform: [{ translateY: position }], marginTop:30}}>

@@ -6,23 +6,30 @@ import API from "../helpers/APIs";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Calculator from "../components/calculator";
 import WorkLog from "../components/workLog";
+import DayEarn from "../components/dayEarn";
 
 const Home = () => {
     const deliveryFeeList = {'BurgerMeatGrill' : [2.5, 3, 3.5, 4], 'Happy House' : [1.5, 2, 3, 3.5], 'New Orchid Garden' : [2.5, 3, 3.5, 4]}
+    const [slipsCountDict, setSlipsCountDict] = useState([])
     const params = useSearchParams()
     const [workLog, setWorkLog] = useState([])
     const [userID, setUserID] = useState("")
+    const [totalEarning, setTotalEarning] = useState(0)
+    const [slipsTotal, setSlipsTotal] = useState(0)
+
+
 
     useEffect(() => {
-        API.GetUser(params.name)
-        .then(response => response.json())
-        .then(data => {
-            setUserID(data._id)
-            const logToSave = data.deliveries.find(each => each.date === params.date)
-            setWorkLog(logToSave || [])
-            
-        })
+        updateData(params.name)
     }, [])
+
+    function getSlipTotal(data){
+        let slipTotal = 0
+        for (each in data){
+            slipTotal += (+each) * data[each]
+        }
+        setSlipsTotal(slipTotal)
+    }
 
     async function deleteDelivery (data){
         await API.DeleteDelivery(data)
@@ -33,12 +40,9 @@ const Home = () => {
         })
         
     }
-
     async function addToLog(data){
         await API.AddToLog(data)
-        console.log(data)
         await updateData()
-        console.log(workLog)
     }
 
     function updateData(){
@@ -46,12 +50,25 @@ const Home = () => {
         .then(response => response.json())
         .then(data => {
             const logToSave = data.deliveries.find(each => each.date === params.date)
-            console.log(params.date)
-            console.log(data)
-            console.log(logToSave)
             setWorkLog(logToSave)
+            setTotalEarning(data.total)
+            getSlipsCount(data)
+            setUserID(data._id)
             
     })
+}
+
+async function getSlipsCount(data){
+    const slipsDict = {}
+    deliveryFeeList[params.shop].forEach(each => {
+        slipsDict[each] = 0
+    })
+    const allDeliveries = data.deliveries[0].deliveries
+    allDeliveries.forEach(each => {
+        slipsDict[String(each.slip)] += 1
+    })
+    setSlipsCountDict(slipsDict)
+    getSlipTotal(slipsDict)
 }
 
 
@@ -75,6 +92,9 @@ const Home = () => {
             <View style={{height:'51%'}}>
                 <WorkLog workLog={workLog} deleteDelivery={deleteDelivery} userID={userID}/>
             </View> : null}
+            <View style={{height:'37%', marginTop:20}}>
+                <DayEarn slipsCountDict={slipsCountDict} totalEarning={totalEarning} slipsTotal={slipsTotal}/>
+            </View>
             <View style={{position:'absolute', bottom:'-60%', alignSelf:'center'}}>
                 <Calculator list={deliveryFeeList[params.shop]} addToLog={addToLog} name={params.name} shop={params.shop} shift={params.shift}/>
             </View>
