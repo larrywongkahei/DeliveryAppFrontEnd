@@ -67,7 +67,9 @@ async function getSlipsCount(data){
     })
     const allDeliveries = data.deliveries[0].deliveries
     allDeliveries.forEach(each => {
-        slipsDict[String(each.slip)] += 1
+        if(each.slip !== 0){
+            slipsDict[String(each.slip)] += 1
+        }
     })
     setSlipsCountDict(slipsDict)
     getSlipTotal(slipsDict)
