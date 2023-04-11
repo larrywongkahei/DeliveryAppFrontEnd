@@ -26,7 +26,9 @@ const Home = () => {
     function getSlipTotal(data){
         let slipTotal = 0
         for (each in data){
-            slipTotal += (+each) * data[each]
+            if (+each !== 0){
+                slipTotal += (+each) * data[each]
+            }
         }
         setSlipsTotal(slipTotal)
     }

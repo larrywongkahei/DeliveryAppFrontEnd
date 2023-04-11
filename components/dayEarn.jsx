@@ -4,6 +4,8 @@ import styles from "../style.style";
 
 const DayEarn = props => {
 
+    console.log(props.totalEarning)
+
 
 
     return(
@@ -26,11 +28,14 @@ const DayEarn = props => {
                     )
                 })}
                 </View>
-                <Text>
-                    Slips Total = {props.slipsTotal}
+                <Text style={{textAlign:'center', fontSize:18, marginTop:16}}>
+                    Slips Total = £  {props.slipsTotal}
                 </Text>
                 <Text>
-                    Tips count:{}
+                    Tips count: {}
+                </Text>
+                <Text>
+                    Today's earn: £  {props.totalEarning}
                 </Text>
         </View>
     )

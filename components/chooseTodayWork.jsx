@@ -16,7 +16,6 @@ const ChooseTodayWork = props => {
             'shop': changeShopName[shopChosen],
             'shift': shiftChosen,
             'date' : props.theDate,
-            'total' : 0,
             'deliveries': []
         }
         }
