@@ -19,12 +19,6 @@ const Home = () => {
     const [showCal, setShowCal] = useState(true)
 
 
-
-
-    useEffect(() => {
-        updateData(params.name)
-    }, [])
-
     function getSlipTotal(data){
         let slipTotal = 0
         for (each in data){
@@ -39,16 +33,11 @@ const Home = () => {
         setShowCal(!showCal)
     }
 
-    function deleteDelivery (data){
-        API.DeleteDelivery(data)
-        .then(res => {
-            if (res.status === 200){
-                console.log(res.status)
-                updateData()
-            }
-        })
-        
+    async function deleteDelivery (data){
+        await API.DeleteDelivery(data)
+        await updateData()
     }
+
     async function addToLog(data){
         await API.AddToLog(data)
         await updateData()
@@ -60,12 +49,16 @@ const Home = () => {
         .then(data => {
             const logToSave = data.deliveries.find(each => each.date === params.date)
             setWorkLog(logToSave)
+            console.log(data.deliveries[0])
+            console.log(data.deliveries[0].total)
             setTotalEarning(data.deliveries[0].total)
             getSlipsCount(data)
             setUserID(data._id)
             
     })
 }
+
+
 
 async function getSlipsCount(data){
     const slipsDict = {}
