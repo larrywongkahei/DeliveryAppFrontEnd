@@ -18,6 +18,10 @@ const Home = () => {
     const [slipsTotal, setSlipsTotal] = useState(0)
     const [showCal, setShowCal] = useState(true)
 
+    useEffect(() => {
+        updateData()
+    }, [])
+
 
     function getSlipTotal(data){
         let slipTotal = 0

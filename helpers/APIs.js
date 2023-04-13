@@ -1,6 +1,6 @@
 const API = {
     createUser (newUser){
-        return fetch("http://192.168.0.2:3000/createuser", {
+        return fetch("https://vast-wave-67131.herokuapp.com/createuser", {
             method: "post",
             body: JSON.stringify(newUser),
             headers: {
@@ -15,7 +15,7 @@ const API = {
             }})
     },
     Login(user) {
-        return fetch('http://192.168.0.2:3000/login', {
+        return fetch('https://vast-wave-67131.herokuapp.com/login', {
           method: "post",
           body: JSON.stringify(user),
           headers: {
@@ -30,7 +30,7 @@ const API = {
             }})
     },
     UpdateUser(data){
-        return fetch('http://192.168.0.2:3000/update', {
+        return fetch('https://vast-wave-67131.herokuapp.com/update', {
           method: "put",
           body: JSON.stringify(data),
           headers: {
@@ -39,12 +39,12 @@ const API = {
         })
     },
     GetUser(name){
-        return fetch('http://192.168.0.2:3000/'+ name, {
+        return fetch('https://vast-wave-67131.herokuapp.com/'+ name, {
           method:'get'
         })
     },
     AddToLog(data){
-      return fetch('http://192.168.0.2:3000/addDelivery', {
+      return fetch('https://vast-wave-67131.herokuapp.com/addDelivery', {
           method: "put",
           body: JSON.stringify(data),
           headers: {
@@ -53,7 +53,7 @@ const API = {
       })
     },
     DeleteDelivery(data){
-      return fetch('http://192.168.0.2:3000/deleteDelivery', {
+      return fetch('https://vast-wave-67131.herokuapp.com/deleteDelivery', {
           method: "put",
           body: JSON.stringify(data),
           headers: {
