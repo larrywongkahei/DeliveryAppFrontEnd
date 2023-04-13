@@ -61,7 +61,7 @@ const Home = () => {
 
 async function getSlipsCount(data){
     const slipsDict = {}
-    deliveryFeeList[params.shop].forEach(each => {
+    deliveryFeeList.forEach(each => {
         slipsDict[each] = 0
     })
     const allDeliveries = data.deliveries[0].deliveries
