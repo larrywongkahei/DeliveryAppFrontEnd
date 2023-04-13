@@ -4,7 +4,6 @@ import styles from "../style.style";
 
 const WorkLog = props => {
 
-    const reverseList = props.workLog.deliveries?.reverse()
 
     function handleDelete(dataToDelete){
         const data = {
@@ -17,7 +16,7 @@ const WorkLog = props => {
     return (
         <SafeAreaView style={{}}>
             <ScrollView>
-            {reverseList?.map((each, index) => {
+            {props.workLog?.map((each, index) => {
                 return (
                     <View key={index} style={{flex:0, flexDirection:'row', justifyContent:'space-between', backgroundColor:"#FFC0CB", marginTop:15, marginLeft:10, marginRight:10, padding:10}}>
 

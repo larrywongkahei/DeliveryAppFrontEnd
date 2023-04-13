@@ -48,9 +48,8 @@ const Home = () => {
         .then(response => response.json())
         .then(data => {
             const logToSave = data.deliveries.find(each => each.date === params.date)
-            setWorkLog(logToSave)
-            console.log(data.deliveries[0])
-            console.log(data.deliveries[0].total)
+            const reverseList = logToSave.deliveries?.reverse()
+            setWorkLog(reverseList)
             setTotalEarning(data.deliveries[0].total)
             getSlipsCount(data)
             setUserID(data._id)
