@@ -9,6 +9,7 @@ import API from "../helpers/APIs";
 const Calculator = props => {
     const priceList = props.list
     const listBelow10 = []
+    const priceListToShow = []
 
     const [selectedValue, setSelectedValue] = useState(0)
     const [showCal, setShowCal] = useState(true)
@@ -81,6 +82,12 @@ const Calculator = props => {
         }
     }
 
+    priceList.forEach(each => {
+        priceListToShow.push(
+            <Picker.Item label={"£" + each} value={each} />
+        )
+    })
+
 
     return (
         <SafeAreaView style={{}}>
@@ -131,8 +138,8 @@ const Calculator = props => {
                 </View>
 
                 {/* Buttons */}
-                <View style={{ justifyContent: 'space-between', flexDirection: 'row', paddingBottom: 20 }}>
-                    <View style={{ flexDirection: 'row', width: '69%', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
+                <View style={{ justifyContent: 'space-evenly', flexDirection: 'row', paddingBottom: 20, width:'100%' }}>
+                    {/* <View style={{ flexDirection: 'row', width: '69%', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
                         {priceList?.map((each, index) => {
                             return (
                                 <TouchableOpacity key={index} style={{ width: '35%', borderRadius: '100%', backgroundColor: '#FF5733', marginTop: 50, paddingTop: 39, paddingBottom: 39 }} onPress={() => setValueToAdd(each)}>
@@ -142,9 +149,20 @@ const Calculator = props => {
                                 </TouchableOpacity>
                             )
                         })}
+                    </View> */}
+                    <View style={{ width: '25%', backgroundColor: '#FFC0CB', borderRadius: 40, height: '100%', marginTop: 30, marginRight: 25, marginLeft:25, paddingBottom: 10}}>
+                            <Text style={{textAlign:'center', fontSize:20}}>
+                                Slips
+                            </Text>
+                            <Picker selectedValue={valueToAdd} onValueChange={(itemValue, itemIndex) => setValueToAdd(itemValue)}>
+                                {priceListToShow}
+                            </Picker>
                     </View>
 
-                    <View style={{ width: '25%', backgroundColor: '#FFC0CB', borderRadius: 40, height: '100%', marginTop: 30, marginRight: 25 }}>
+                    <View style={{ width: '25%', backgroundColor: '#FFC0CB', borderRadius: 40, height: '100%', marginTop: 30, marginRight: 25, marginLeft:25, paddingBottom: 10 }}>
+                        <Text style={{textAlign:'center', fontSize:20}}>
+                                Tips
+                            </Text>
                         <Picker selectedValue={selectedValue} onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
                             {listBelow10}
                         </Picker>

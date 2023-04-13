@@ -9,7 +9,7 @@ import WorkLog from "../components/workLog";
 import DayEarn from "../components/dayEarn";
 
 const Home = () => {
-    const deliveryFeeList = {'BurgerMeatGrill' : [2.5, 3, 3.5, 4], 'Happy House' : [1.5, 2, 3, 3.5], 'New Orchid Garden' : [2.5, 3, 3.5, 4]}
+    const deliveryFeeList = [1.5, 2, 2.5, 3, 3.5, 4, 4.5]
     const [slipsCountDict, setSlipsCountDict] = useState([])
     const params = useSearchParams()
     const [workLog, setWorkLog] = useState([])
@@ -100,7 +100,7 @@ async function getSlipsCount(data){
                 <DayEarn slipsCountDict={slipsCountDict} totalEarning={totalEarning} slipsTotal={slipsTotal}/>
             </View> : null}
             <View style={{position:'absolute', bottom:'-60%', alignSelf:'center'}}>
-                <Calculator list={deliveryFeeList[params.shop]} addToLog={addToLog} name={params.name} shop={params.shop} shift={params.shift} setShowCalFun={setShowCalFun}/>
+                <Calculator list={deliveryFeeList} addToLog={addToLog} name={params.name} shop={params.shop} shift={params.shift} setShowCalFun={setShowCalFun}/>
             </View>
         </SafeAreaView>
     )
