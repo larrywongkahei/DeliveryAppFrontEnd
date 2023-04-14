@@ -56,7 +56,6 @@ const Home = () => {
             setWorkLog(reverseList)
             setTotalEarning(logToSave.total)
             getSlipsCount(data)
-            console.log(data)
             setUserID(data._id)
             
     })
