@@ -27,11 +27,6 @@ const Home = () => {
         updateData()
     }, [])
 
-    useEffect(() => {
-        setLoading(false)
-    }, [workLog])
-
-
     function getSlipTotal(data){
         let slipTotal = 0
         for (each in data){
