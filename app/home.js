@@ -54,8 +54,9 @@ const Home = () => {
             const logToSave = data.deliveries.find(each => each.date === params.date)
             const reverseList = logToSave.deliveries?.reverse()
             setWorkLog(reverseList)
-            setTotalEarning(data.deliveries[0].total)
+            setTotalEarning(logToSave.total)
             getSlipsCount(data)
+            console.log(data)
             setUserID(data._id)
             
     })
@@ -64,11 +65,12 @@ const Home = () => {
 
 
 async function getSlipsCount(data){
+    const logToSave = data.deliveries.find(each => each.date === params.date)
     const slipsDict = {}
     deliveryFeeList.forEach(each => {
         slipsDict[each] = 0
     })
-    const allDeliveries = data.deliveries[0].deliveries
+    const allDeliveries = logToSave.deliveries
     allDeliveries.forEach(each => {
         if(each.slip !== 0){
             slipsDict[String(each.slip)] += 1
