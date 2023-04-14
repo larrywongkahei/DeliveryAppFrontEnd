@@ -2,7 +2,6 @@ import { SafeAreaView, Text, View, TouchableOpacity, ScrollView, Image } from "r
 import { Stack, useRouter, useSearchParams } from "expo-router";
 import { useState } from "react";
 import styles from "../style.style";
-import { add } from "react-native-reanimated";
 
 const ChooseTodayWork = props => {
     const [shopChosen, setShopChosen] = useState("")

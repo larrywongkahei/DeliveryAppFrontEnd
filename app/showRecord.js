@@ -47,7 +47,7 @@ const ShowRecord = () => {
 }
 
     return (
-        <View style={{alignItems:'center'}}>
+        <View style={{alignItems:'center', marginTop:'50%', backgroundColor:'#FFC0CB'}}>
             <Text style={{marginTop:10, fontSize:15}}>
                 {params.date}
             </Text>
@@ -68,11 +68,14 @@ const ShowRecord = () => {
                 )
             })}
             </View>
-            <Text>
-                Slip total = {getSlipTotal(slipsCountDict)}
+            <Text style={{marginTop:40, fontSize:20}}>
+                Slip total : £{getSlipTotal(slipsCountDict)}
             </Text>
-            <Text>
-                Total = {dataOfDate.total}
+            <Text style={{marginTop:40, fontSize:20}}>
+                Tips : £{dataOfDate.total - getSlipTotal(slipsCountDict)}
+            </Text>
+            <Text style={{marginTop:40, fontSize:30, alignSelf:'flex-end', marginRight:15}}>
+                Total : £{dataOfDate.total}
             </Text>
         </View>
     )

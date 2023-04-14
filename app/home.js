@@ -9,6 +9,7 @@ import Calculator from "../components/calculator";
 import WorkLog from "../components/workLog";
 import DayEarn from "../components/dayEarn";
 import { createDrawerNavigator, DraerItems, createAppContainer } from 'react-navigation';
+import Loading from "../components/loadingScreen";
 
 const Home = () => {
     const deliveryFeeList = [1.5, 2, 2.5, 3, 3.5, 4, 4.5]
@@ -19,11 +20,16 @@ const Home = () => {
     const [totalEarning, setTotalEarning] = useState(0)
     const [slipsTotal, setSlipsTotal] = useState(0)
     const [showCal, setShowCal] = useState(true)
+    const [loading, setLoading] = useState(false)
     const router = useRouter()
 
     useEffect(() => {
         updateData()
     }, [])
+
+    useEffect(() => {
+        setLoading(false)
+    }, [workLog])
 
 
     function getSlipTotal(data){
@@ -51,6 +57,7 @@ const Home = () => {
     }
 
     function updateData(){
+        setLoading(true)
         API.GetUser(params.name)
         .then(response => response.json())
         .then(data => {
@@ -59,8 +66,8 @@ const Home = () => {
             setWorkLog(reverseList)
             setTotalEarning(logToSave.total)
             getSlipsCount(data)
-            setUserID(data._id)
-            
+            setUserID(data._id) 
+            setLoading(false)
     })
 }
 
@@ -115,6 +122,9 @@ async function getSlipsCount(data){
             <View style={{position:'absolute', bottom:'-60%', alignSelf:'center'}}>
                 <Calculator list={deliveryFeeList} addToLog={addToLog} name={params.name} shop={params.shop} shift={params.shift} setShowCalFun={setShowCalFun}/>
             </View>
+            {loading? 
+                <Loading /> : null
+            }
         </SafeAreaView>
     )
 }
