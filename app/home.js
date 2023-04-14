@@ -2,11 +2,13 @@ import { SafeAreaView, View, Text } from "react-native";
 import { useSearchParams } from "expo-router";
 import { useState, useEffect } from "react";
 import { Stack } from "expo-router";
+import { useRouter } from "expo-router";
 import API from "../helpers/APIs";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Calculator from "../components/calculator";
 import WorkLog from "../components/workLog";
 import DayEarn from "../components/dayEarn";
+import { createDrawerNavigator, DraerItems, createAppContainer } from 'react-navigation';
 
 const Home = () => {
     const deliveryFeeList = [1.5, 2, 2.5, 3, 3.5, 4, 4.5]
@@ -17,6 +19,7 @@ const Home = () => {
     const [totalEarning, setTotalEarning] = useState(0)
     const [slipsTotal, setSlipsTotal] = useState(0)
     const [showCal, setShowCal] = useState(true)
+    const router = useRouter()
 
     useEffect(() => {
         updateData()
@@ -92,6 +95,11 @@ async function getSlipsCount(data){
                     headerTitle: params.shop,
                     headerRight:() => (
                         <Icon name="user-circle" size={35}/>
+                    ),
+                    headerLeft:() => (
+                        <Text onPress={() => {router.push({pathname:'/record', params:{'name':params.name}})}}>
+                            hi
+                        </Text>
                     )
                 }}
                 />

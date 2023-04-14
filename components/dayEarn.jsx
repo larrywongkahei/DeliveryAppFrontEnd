@@ -11,9 +11,9 @@ const DayEarn = props => {
                 Slips Count: 
             </Text>
                 <View style={{flexDirection:'row', justifyContent:'space-evenly'}}>
-                {Object.keys(props.slipsCountDict).sort().map(each => {
+                {Object.keys(props.slipsCountDict).sort().map((each, index) => {
                     return (
-                        <View style={{justifyContent:'center', alignItems:'center', gap:12}}>
+                        <View key={index} style={{justifyContent:'center', alignItems:'center', gap:12}}>
                             <Text style={{fontSize:18}}>
                                 {each}:
                             </Text>
