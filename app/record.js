@@ -59,7 +59,6 @@ const Records = () => {
         .then(data => setAllDeliveries(data.deliveries))
     
     }, [])
-    console.log(Object.keys(numberToMonth))
 
 
     function decodeDate (date) {
