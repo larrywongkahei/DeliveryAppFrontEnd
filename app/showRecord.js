@@ -52,7 +52,7 @@ const ShowRecord = () => {
                 {params.date}
             </Text>
             <Text style={{marginTop:40, fontSize:20}}>
-                {dataOfDate.shop}
+                {dataOfDate?.shop}
             </Text>
             <View style={{flexDirection:'row', justifyContent:'space-evenly', width:'100%', marginTop:20}}>
             {Object.keys(slipsCountDict).sort().map(each => {
@@ -72,7 +72,7 @@ const ShowRecord = () => {
                 Slip total : £{getSlipTotal(slipsCountDict)}
             </Text>
             <Text style={{marginTop:40, fontSize:20}}>
-                Tips : £{dataOfDate.total - getSlipTotal(slipsCountDict)}
+                Tips : £{(dataOfDate.total - getSlipTotal(slipsCountDict)).toFixed(1)}
             </Text>
             <Text style={{marginTop:40, fontSize:30, alignSelf:'flex-end', marginRight:15}}>
                 Total : £{dataOfDate.total}
