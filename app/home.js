@@ -99,11 +99,6 @@ async function getSlipsCount(data){
                     headerRight:() => (
                         <Icon name="user-circle" size={35} onPress={() => {router.push({pathname:'/profile', params:{'name':params.name}})}}/>
                     ),
-                    headerLeft:() => (
-                        <Text onPress={() => {router.push({pathname:'/record', params:{'name':params.name}})}}>
-                            hi
-                        </Text>
-                    )
                 }}
                 />
             </View>: null}

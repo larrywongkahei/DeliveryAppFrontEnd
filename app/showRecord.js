@@ -46,6 +46,19 @@ const ShowRecord = () => {
     setSlipsCountDict(slipsDict)
 }
 
+    const showSlipCount = Object.keys(slipsCountDict).sort().map(each => {
+        return (
+            <View style={{alignItems:'center'}}>
+                <Text style={{fontSize:18}}>
+                    £{each}
+                </Text>
+                <Text style={{fontSize:15}}>
+                    {slipsCountDict[each]}
+                </Text>
+            </View>
+        )
+    })
+
     return (
         <View style={{alignItems:'center', marginTop:'50%', backgroundColor:'#FFC0CB'}}>
             <Text style={{marginTop:10, fontSize:15}}>
@@ -55,18 +68,7 @@ const ShowRecord = () => {
                 {dataOfDate?.shop}
             </Text>
             <View style={{flexDirection:'row', justifyContent:'space-evenly', width:'100%', marginTop:20}}>
-            {Object.keys(slipsCountDict).sort().map(each => {
-                return (
-                    <View style={{alignItems:'center'}}>
-                        <Text style={{fontSize:18}}>
-                            £{each}
-                        </Text>
-                        <Text style={{fontSize:15}}>
-                            {slipsCountDict[each]}
-                        </Text>
-                    </View>
-                )
-            })}
+                {showSlipCount}
             </View>
             <Text style={{marginTop:40, fontSize:20}}>
                 Slip total : £{getSlipTotal(slipsCountDict)}

@@ -3,9 +3,12 @@ import { Stack, useRouter, useSearchParams } from "expo-router";
 import { useState } from "react";
 import API from '../helpers/APIs'
 import styles from "../style.style";
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 const Profile = () => {
 
+    const router = useRouter()
     const [allWorkDays, setAllWorkDays] = useState([])
     const params = useSearchParams()
 
@@ -57,17 +60,17 @@ const Profile = () => {
                     </Text>
                 </TouchableOpacity>
                 {/* 2, show records(Statements) */}
-                <TouchableOpacity style={{ marginTop:30}}>
+                <TouchableOpacity style={{ marginTop:30}} onPress={() => {router.push({pathname:'/record', params:{'name':params.name}})}}>
                     <Text>
                         Statements
                     </Text>
                 </TouchableOpacity>
                 {/* Log out button? */}
-                <TouchableOpacity style={{marginTop:'30%'}}>
+                {/* <TouchableOpacity style={{marginTop:'30%'}}  onPress={() => {}}>
                     <Text>
                         Log out
                     </Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </View>
         </SafeAreaView>
     )
