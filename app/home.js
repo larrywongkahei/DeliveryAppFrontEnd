@@ -56,13 +56,14 @@ const Home = () => {
         API.GetUser(params.name)
         .then(response => response.json())
         .then(data => {
-            const logToSave = data.deliveries.find(each => each.date === params.date)
+            setLoading(false)
+            const logToSave = data?.deliveries.find(each => each.date === params.date)
+            console.log(logToSave)
             const reverseList = logToSave.deliveries?.reverse()
             setWorkLog(reverseList)
             setTotalEarning(logToSave.total)
             getSlipsCount(data)
             setUserID(data._id) 
-            setLoading(false)
     })
 }
 
@@ -96,7 +97,7 @@ async function getSlipsCount(data){
                     headerStyle:{backgroundColor:"#FFC0CB"},
                     headerTitle: params.shop,
                     headerRight:() => (
-                        <Icon name="user-circle" size={35}/>
+                        <Icon name="user-circle" size={35} onPress={() => {router.push({pathname:'/profile', params:{'name':params.name}})}}/>
                     ),
                     headerLeft:() => (
                         <Text onPress={() => {router.push({pathname:'/record', params:{'name':params.name}})}}>
