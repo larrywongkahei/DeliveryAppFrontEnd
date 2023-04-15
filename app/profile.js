@@ -35,12 +35,40 @@ const Profile = () => {
                 {workdays}
             </View>
             {/* Show how much the user made within this month, how many days the user work within two circles */}
-            <View>
-
+            <View style={{marginTop:20, flexDirection:'row', alignItems:'center', justifyContent:"space-evenly"}}>
+                <Text style={{borderWidth:0.5, width:80, height:80, borderRadius:'40%', textAlign:'center', paddingTop:30}}>
+                    {/* How many work days left? */}
+                    Today's
+                </Text>
+                <Text style={{borderWidth:0.5, width:80, height:80, borderRadius:'40%', textAlign:'center', paddingTop:30, marginTop:60}}>
+                    {/* Todays money? */}
+                    Days
+                </Text>
+                <Text style={{borderWidth:0.5, width:80, height:80, borderRadius:'40%', textAlign:'center', paddingTop:30}}>
+                    {/* How much money made so far? */}
+                    Days
+                </Text>
             </View>
             {/* Three buttons:1, modify workdays, shops and shifts(pass back to the shop page?) */}
-            {/* 2, show records(Statements) */}
-            {/* Log out button? */}
+            <View style={{alignItems:'center', marginTop:30}}>
+                <TouchableOpacity style={{ marginTop:30}}>
+                    <Text>
+                        Change Workdays
+                    </Text>
+                </TouchableOpacity>
+                {/* 2, show records(Statements) */}
+                <TouchableOpacity style={{ marginTop:30}}>
+                    <Text>
+                        Statements
+                    </Text>
+                </TouchableOpacity>
+                {/* Log out button? */}
+                <TouchableOpacity style={{marginTop:'30%'}}>
+                    <Text>
+                        Log out
+                    </Text>
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>
     )
 }
