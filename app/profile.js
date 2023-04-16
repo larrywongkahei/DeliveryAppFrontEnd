@@ -76,7 +76,7 @@ const Profile = () => {
                     </Text>
                     <Text style={{borderWidth:0.5, width:80, height:80, borderRadius:'40%', textAlign:'center', paddingTop:30}}>
                         {/* How many work days left? */}
-                        £{monthlyTotal}
+                        £{monthlyTotal.toFixed(1)}
                     </Text>
                 </View>
                 <View style={{marginTop:60, alignItems:'center'}}>
