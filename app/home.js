@@ -1,5 +1,5 @@
 import { SafeAreaView, View, Text } from "react-native";
-import { useSearchParams } from "expo-router";
+import { SplashScreen, useSearchParams } from "expo-router";
 import { useState, useEffect } from "react";
 import { Stack } from "expo-router";
 import { useRouter } from "expo-router";
@@ -8,7 +8,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Calculator from "../components/calculator";
 import WorkLog from "../components/workLog";
 import DayEarn from "../components/dayEarn";
-import { createDrawerNavigator, DraerItems, createAppContainer } from 'react-navigation';
 import Loading from "../components/loadingScreen";
 
 const Home = () => {

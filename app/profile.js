@@ -47,9 +47,9 @@ const Profile = () => {
     }
     
     
-    const workdays = allWorkDays.map(each => {
+    const workdays = allWorkDays.map((each, index) => {
         return (
-            <Text style={styles.days}>
+            <Text key={index} style={styles.days}>
                 {each.weekday}
             </Text>
         )
@@ -74,7 +74,7 @@ const Profile = () => {
                     <Text>
                         Monthly total
                     </Text>
-                    <Text style={{borderWidth:0.5, width:80, height:80, borderRadius:'40%', textAlign:'center', paddingTop:30}}>
+                    <Text style={{borderWidth:0.5, width:80, height:80, borderRadius:40, textAlign:'center', paddingTop:30}}>
                         {/* How many work days left? */}
                         £{monthlyTotal.toFixed(1)}
                     </Text>
@@ -83,7 +83,7 @@ const Profile = () => {
                     <Text>
                         Work Days
                     </Text>
-                    <Text style={{borderWidth:0.5, width:80, height:80, borderRadius:'40%', textAlign:'center', paddingTop:30}}>
+                    <Text style={{borderWidth:0.5, width:80, height:80, borderRadius:40, textAlign:'center', paddingTop:30}}>
                         {/* Todays money? */}
                         {allDeliveries.length}
                     </Text>
@@ -92,7 +92,7 @@ const Profile = () => {
                     <Text>
                         Monthly tips
                     </Text>
-                    <Text style={{borderWidth:0.5, width:80, height:80, borderRadius:'40%', textAlign:'center', paddingTop:30}}>
+                    <Text style={{borderWidth:0.5, width:80, height:80, borderRadius:40, textAlign:'center', paddingTop:30}}>
                         {/* How much money made so far? */}
                         £{monthlyTips.toFixed(1)}
                     </Text>

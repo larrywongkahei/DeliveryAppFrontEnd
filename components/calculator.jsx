@@ -12,7 +12,6 @@ const Calculator = props => {
     const priceListToShow = []
 
     const [selectedValue, setSelectedValue] = useState(0)
-    const showCal = props.showCal
     const [valueToAdd, setValueToAdd] = useState(0)
     const [totalToAdd, setTotalToAdd] = useState(0)
 
