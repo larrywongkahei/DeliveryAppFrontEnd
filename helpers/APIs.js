@@ -39,7 +39,7 @@ const API = {
         })
     },
     GetUser(name){
-        return fetch('https://vast-wave-67131.herokuapp.com/'+ name, {
+        return fetch('https://vast-wave-67131.herokuapp.com/data?name='+ name, {
           method:'get'
         })
     },
@@ -61,6 +61,11 @@ const API = {
           }
       })
     },
+    CheckUser(email){
+      return fetch('https://vast-wave-67131.herokuapp.com/data?email='+ email, {
+        method:'get'
+      })
+  },
 }
 
 export default API

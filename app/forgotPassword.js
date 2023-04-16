@@ -8,12 +8,30 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const ForgotPassword = () => {
 
+    const [showPassword, setShowPassword] = useState(false)
+
     const router = useRouter()
 
+
+    function checkUserExist (){
+        API.CheckUser('Aa')
+        .then(response => {
+            if(response.status === 400){
+                Alert.alert("Something's wrong", 'Your details doesnt match any existing user', 
+                {
+                  text: 'Cancel',
+                  style: 'cancel',
+                })
+            }else{
+                console.log('yes')
+                setShowPassword(!showPassword)
+            }
+        })
+    }
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{alignItems:'center'}}>
             <Text>
-                This is forgot password page
+                Having trouble signing in?
             </Text>
         </SafeAreaView>
     )
