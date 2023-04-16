@@ -69,11 +69,11 @@ const Calculator = props => {
     for (let i = 0.1; i <= 6; i = i + 0.1) {
         if (i.toFixed(1) - Math.floor(i.toFixed(1)) == 0) {
             listBelow10.push(
-                <Picker.Item label={"£" + (i).toFixed(0)} value={(i).toFixed(0)} />
+                <Picker.Item key={i} label={"£" + (i).toFixed(0)} value={(i).toFixed(0)} />
             )
         } else {
             listBelow10.push(
-                <Picker.Item label={"£" + (i).toFixed(1)} value={(i).toFixed(1)} />
+                <Picker.Item key={i} label={"£" + (i).toFixed(1)} value={(i).toFixed(1)} />
             )
         }
     }
@@ -87,14 +87,6 @@ const Calculator = props => {
 
     return (
         <SafeAreaView style={{}}>
-
-            {/* Add Icon */}
-            {/* {showCal ? 
-                <TouchableOpacity onPress={showTheCal} style={{ alignItems:'center', paddingBottom:30}}>
-                    <Icon name="plus-circle" size={80}/>
-                </TouchableOpacity> : null} */}
-
-            {/* Monitor */}
             <Animated.View style={{ transform: [{ translateY: position }], marginTop:30}}>
                 <View style={{width:'100%', backgroundColor:'#000000'}}>
                     <View style={{ backgroundColor: '#000000', flexDirection: 'row', justifyContent:'space-between'}}>
