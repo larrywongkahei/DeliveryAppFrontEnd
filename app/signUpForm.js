@@ -114,7 +114,7 @@ const SignUpForm = () => {
                 
                 <TouchableOpacity style={styles.signUpBtn} onPress={handleFinishForm}>
                     <Text style={{textAlign:'center'}}>
-                        Confirm
+                        Sign Up
                     </Text>
                 </TouchableOpacity>
 

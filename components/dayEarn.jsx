@@ -1,8 +1,19 @@
 import { SafeAreaView, Text, View, TouchableOpacity, ScrollView, Animated, Touchable } from "react-native";
 import { useState, useEffect, useRef } from "react";
+import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from "../style.style";
+import Calculator from "./calculator";
 
 const DayEarn = props => {
+
+    const showCal = props.showCal
+    const [position, setPosition] = useState(new Animated.Value(0));
+
+
+    function showTheCal () {
+        props.setShowCalFun()
+    }
+
 
     const showSlipCount = Object.keys(props.slipsCountDict).sort().map((each, index) => {
         return (
@@ -35,6 +46,10 @@ const DayEarn = props => {
                 <Text style={{textAlign:'center', fontSize:20, marginTop:16}}>
                     Today's earn: £  {props.totalEarning.toFixed(1)}
                 </Text>
+                {showCal ? 
+                <TouchableOpacity onPress={showTheCal} style={{ alignSelf:'center', position:'absolute', top:'102%'}}>
+                    <Icon name="plus-circle" size={80}/>
+                </TouchableOpacity> : null}
         </View>
     )
 }

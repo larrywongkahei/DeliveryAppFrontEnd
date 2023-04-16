@@ -65,7 +65,7 @@ const Newpage = () =>{
             }}
             />
             <View style={{gap:24, flex:1, justifyContent:"center", alignItems:"center"}}>
-                <TextInput style={styles.homeInput}
+                <TextInput id={'hi'} style={styles.homeInput}
                     placeholderTextColor="gray"
                     placeholder="Username"
                     value={username}

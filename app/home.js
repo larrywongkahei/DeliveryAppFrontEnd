@@ -58,7 +58,6 @@ const Home = () => {
         .then(data => {
             setLoading(false)
             const logToSave = data?.deliveries.find(each => each.date === params.date)
-            console.log(logToSave)
             const reverseList = logToSave.deliveries?.reverse()
             setWorkLog(reverseList)
             setTotalEarning(logToSave.total)
@@ -108,11 +107,12 @@ function getSlipsCount(data){
             </View> : null}
             {showCal ? 
             <View style={{height:'37%', marginTop:20}}>
-                <DayEarn slipsCountDict={slipsCountDict} totalEarning={totalEarning} slipsTotal={slipsTotal}/>
-            </View> : null}
-            <View style={{position:'absolute', bottom:'-60%', alignSelf:'center'}}>
-                <Calculator list={deliveryFeeList} addToLog={addToLog} name={params.name} shop={params.shop} shift={params.shift} setShowCalFun={setShowCalFun}/>
-            </View>
+                <DayEarn slipsCountDict={slipsCountDict} totalEarning={totalEarning} slipsTotal={slipsTotal} setShowCalFun={setShowCalFun} showCal={showCal}/>
+            </View> :
+             <View style={{position:'absolute', bottom:'-60%', alignSelf:'center'}}>
+                <Calculator list={deliveryFeeList} addToLog={addToLog} name={params.name} shop={params.shop} shift={params.shift} setShowCalFun={setShowCalFun} showCal={showCal}/>
+            </View>}
+            
             {loading? 
                 <Loading /> : null
             }

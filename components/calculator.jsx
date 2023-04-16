@@ -12,9 +12,13 @@ const Calculator = props => {
     const priceListToShow = []
 
     const [selectedValue, setSelectedValue] = useState(0)
-    const [showCal, setShowCal] = useState(true)
+    const showCal = props.showCal
     const [valueToAdd, setValueToAdd] = useState(0)
     const [totalToAdd, setTotalToAdd] = useState(0)
+
+    useEffect(() => {
+        showTheCal()
+    }, [])
 
     useEffect(()=>{
         setTotalToAdd(valueToAdd + (+selectedValue))
@@ -44,29 +48,20 @@ const Calculator = props => {
             showTheCal()
             if(totalToAdd !== 0){
                 props.addToLog(data)
+                props.setShowCalFun()
             }
         }
 
     function showTheCal () {
-        setShowCal(!showCal)
-        props.setShowCalFun()
         setSelectedValue(0)
         setTotalToAdd(0)
         setValueToAdd(0)
-        if(showCal){
-            Animated.spring(position, {
-                toValue: -450,
-                speed:5,
-                useNativeDriver: true,
-        }).start()
-        }else{
-            Animated.spring(position, {
-                toValue: 500,
-                speed:5,
-                useNativeDriver: true,
+        Animated.spring(position, {
+            toValue: '-450%',
+            speed:5,
+            useNativeDriver: true,
         }).start()
         }
-    }
 
 
 
@@ -82,7 +77,7 @@ const Calculator = props => {
         }
     }
 
-    priceList.forEach(each => {
+    priceList?.forEach(each => {
         priceListToShow.push(
             <Picker.Item label={"£" + each} value={each} />
         )
@@ -93,10 +88,10 @@ const Calculator = props => {
         <SafeAreaView style={{}}>
 
             {/* Add Icon */}
-            {showCal ? 
+            {/* {showCal ? 
                 <TouchableOpacity onPress={showTheCal} style={{ alignItems:'center', paddingBottom:30}}>
                     <Icon name="plus-circle" size={80}/>
-                </TouchableOpacity> : null}
+                </TouchableOpacity> : null} */}
 
             {/* Monitor */}
             <Animated.View style={{ transform: [{ translateY: position }], marginTop:30}}>
