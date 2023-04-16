@@ -1,6 +1,6 @@
 import { Text, TextInput, View, ScrollView, SafeAreaView, TouchableOpacity, Alert} from "react-native";
 import { Stack, useRouter, useSearchParams } from "expo-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import API from '../helpers/APIs'
 import styles from "../style.style";
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -10,12 +10,30 @@ const Profile = () => {
 
     const router = useRouter()
     const [allWorkDays, setAllWorkDays] = useState([])
+    const [monthlyTotal, setMonthlyTotal] = useState(0)
     const params = useSearchParams()
+    
+    useEffect(() => {
+        API.GetUser(params.name)
+        .then(response => response.json())
+        .then(data => {
+            setAllWorkDays(data.workdays)
+            getTotal(data.deliveries)
+        })
+    }, [])
 
-    API.GetUser(params.name)
-    .then(response => response.json())
-    .then(data => {setAllWorkDays(data.workdays)})
 
+    function getTotal (allDeliveries){
+        const date = new Date
+        let total = 0
+        allDeliveries.forEach(each => {
+            if(each.date.slice(5, 7) === date.toISOString().slice(5, 7)){
+                total += each.total
+            }
+        })
+        setMonthlyTotal(total)
+    }
+    
     const workdays = allWorkDays.map(each => {
         return (
             <Text style={styles.days}>
@@ -41,7 +59,7 @@ const Profile = () => {
             <View style={{marginTop:20, flexDirection:'row', alignItems:'center', justifyContent:"space-evenly"}}>
                 <Text style={{borderWidth:0.5, width:80, height:80, borderRadius:'40%', textAlign:'center', paddingTop:30}}>
                     {/* How many work days left? */}
-                    Today's
+                    {monthlyTotal}
                 </Text>
                 <Text style={{borderWidth:0.5, width:80, height:80, borderRadius:'40%', textAlign:'center', paddingTop:30, marginTop:60}}>
                     {/* Todays money? */}
@@ -54,7 +72,7 @@ const Profile = () => {
             </View>
             {/* Three buttons:1, modify workdays, shops and shifts(pass back to the shop page?) */}
             <View style={{alignItems:'center', marginTop:30}}>
-                <TouchableOpacity style={{ marginTop:30}}>
+                <TouchableOpacity style={{ marginTop:30}} onPress={() => {router.replace({pathname:'/changeWorkdays', params:{username : params.name}})}}>
                     <Text>
                         Change Workdays
                     </Text>
