@@ -11,6 +11,8 @@ const Profile = () => {
     const router = useRouter()
     const [allWorkDays, setAllWorkDays] = useState([])
     const [monthlyTotal, setMonthlyTotal] = useState(0)
+    const [allDeliveries, setAllDeliveries] = useState([])
+    const [monthlyTips, setMonthlyTips] = useState(0)
     const params = useSearchParams()
     
     useEffect(() => {
@@ -18,21 +20,33 @@ const Profile = () => {
         .then(response => response.json())
         .then(data => {
             setAllWorkDays(data.workdays)
+            setAllDeliveries(data.deliveries)
             getTotal(data.deliveries)
+            getSlipsCount(data.deliveries)
         })
     }, [])
 
 
     function getTotal (allDeliveries){
         const date = new Date
+        const deliveriesThisMonth = allDeliveries.filter(each => each.date.slice(5, 7) === date.toISOString().slice(5, 7))
         let total = 0
-        allDeliveries.forEach(each => {
-            if(each.date.slice(5, 7) === date.toISOString().slice(5, 7)){
+        deliveriesThisMonth.forEach(each => {
                 total += each.total
-            }
         })
         setMonthlyTotal(total)
     }
+
+    function getSlipsCount(data){
+        const date = new Date
+        const deliveriesThisMonth = data.filter(each => each.date.slice(5, 7) === date.toISOString().slice(5, 7))
+        let total = 0
+        deliveriesThisMonth.forEach(each => {
+            each.deliveries.forEach(delivery => {total += delivery.tips})
+        })
+        setMonthlyTips(total)
+    }
+    
     
     const workdays = allWorkDays.map(each => {
         return (
@@ -57,18 +71,33 @@ const Profile = () => {
             </View>
             {/* Show how much the user made within this month, how many days the user work within two circles */}
             <View style={{marginTop:20, flexDirection:'row', alignItems:'center', justifyContent:"space-evenly"}}>
-                <Text style={{borderWidth:0.5, width:80, height:80, borderRadius:'40%', textAlign:'center', paddingTop:30}}>
-                    {/* How many work days left? */}
-                    {monthlyTotal}
-                </Text>
-                <Text style={{borderWidth:0.5, width:80, height:80, borderRadius:'40%', textAlign:'center', paddingTop:30, marginTop:60}}>
-                    {/* Todays money? */}
-                    Days
-                </Text>
-                <Text style={{borderWidth:0.5, width:80, height:80, borderRadius:'40%', textAlign:'center', paddingTop:30}}>
-                    {/* How much money made so far? */}
-                    Days
-                </Text>
+                <View style={{alignItems:'center'}}>
+                    <Text>
+                        Monthly total
+                    </Text>
+                    <Text style={{borderWidth:0.5, width:80, height:80, borderRadius:'40%', textAlign:'center', paddingTop:30}}>
+                        {/* How many work days left? */}
+                        £{monthlyTotal}
+                    </Text>
+                </View>
+                <View style={{marginTop:60, alignItems:'center'}}>
+                    <Text>
+                        Work Days
+                    </Text>
+                    <Text style={{borderWidth:0.5, width:80, height:80, borderRadius:'40%', textAlign:'center', paddingTop:30}}>
+                        {/* Todays money? */}
+                        {allDeliveries.length}
+                    </Text>
+                </View>
+                <View style={{alignItems:'center'}}>
+                    <Text>
+                        Monthly tips
+                    </Text>
+                    <Text style={{borderWidth:0.5, width:80, height:80, borderRadius:'40%', textAlign:'center', paddingTop:30}}>
+                        {/* How much money made so far? */}
+                        £{monthlyTips}
+                    </Text>
+                </View>
             </View>
             {/* Three buttons:1, modify workdays, shops and shifts(pass back to the shop page?) */}
             <View style={{alignItems:'center', marginTop:30}}>

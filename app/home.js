@@ -69,7 +69,7 @@ const Home = () => {
 
 
 
-async function getSlipsCount(data){
+function getSlipsCount(data){
     const logToSave = data.deliveries.find(each => each.date === params.date)
     const slipsDict = {}
     deliveryFeeList.forEach(each => {
