@@ -46,9 +46,9 @@ const ShowRecord = () => {
     setSlipsCountDict(slipsDict)
 }
 
-    const showSlipCount = Object.keys(slipsCountDict).sort().map(each => {
+    const showSlipCount = Object.keys(slipsCountDict).sort().map((index, each) => {
         return (
-            <View style={{alignItems:'center'}}>
+            <View key={index} style={{alignItems:'center'}}>
                 <Text style={{fontSize:18}}>
                     £{each}
                 </Text>
