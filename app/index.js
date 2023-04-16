@@ -4,6 +4,7 @@ import { useState } from "react";
 import API from '../helpers/APIs'
 import styles from "../style.style";
 
+
 const Homepage = () => {
 
     const router = useRouter();
@@ -86,7 +87,7 @@ const Homepage = () => {
                     secureTextEntry={true}
                     />
 
-                <TouchableOpacity onPress={()=>{}} style={{}}>
+                <TouchableOpacity onPress={()=>{router.push('/forgotPassword')}} style={{}}>
                     <Text style={{color:"#FC6C85"}}>
                         Forgotten password?
                     </Text>
@@ -102,7 +103,7 @@ const Homepage = () => {
                 <Text>
                     Dont't have an account?
                 </Text>
-                <TouchableOpacity onPress={()=>{router.replace('/signup')}} style={{}}>
+                <TouchableOpacity onPress={()=>{router.push('/signup')}} style={{}}>
                     <Text style={{textAlign:"center", marginBottom:10, color:"#FC6C85"}}>
                         Sign Up
                     </Text>

@@ -49,6 +49,8 @@ const Calculator = props => {
             if(totalToAdd !== 0){
                 props.addToLog(data)
                 props.setShowCalFun()
+            }else{
+                props.setShowCalFun()
             }
         }
 
@@ -61,7 +63,7 @@ const Calculator = props => {
             speed:5,
             useNativeDriver: true,
         }).start()
-        }
+    }
 
 
 
@@ -145,7 +147,7 @@ const Calculator = props => {
                             )
                         })}
                     </View> */}
-                    <View style={{ width: '25%', backgroundColor: '#FFC0CB', borderRadius: 40, height: '100%', marginTop: 30, marginRight: 25, marginLeft:25, paddingBottom: 10}}>
+                    <View style={{ width: '27%', backgroundColor: '#FFC0CB', borderRadius: 40, height: '100%', marginTop: 30, marginRight: 25, marginLeft:25, paddingBottom: 10}}>
                             <Text style={{textAlign:'center', fontSize:20}}>
                                 Slips
                             </Text>
@@ -154,7 +156,7 @@ const Calculator = props => {
                             </Picker>
                     </View>
 
-                    <View style={{ width: '25%', backgroundColor: '#FFC0CB', borderRadius: 40, height: '100%', marginTop: 30, marginRight: 25, marginLeft:25, paddingBottom: 10 }}>
+                    <View style={{ width: '27%', backgroundColor: '#FFC0CB', borderRadius: 40, height: '100%', marginTop: 30, marginRight: 25, marginLeft:25, paddingBottom: 10 }}>
                         <Text style={{textAlign:'center', fontSize:20}}>
                                 Tips
                             </Text>

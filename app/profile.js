@@ -3,7 +3,6 @@ import { Stack, useRouter, useSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import API from '../helpers/APIs'
 import styles from "../style.style";
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 const Profile = () => {
@@ -95,7 +94,7 @@ const Profile = () => {
                     </Text>
                     <Text style={{borderWidth:0.5, width:80, height:80, borderRadius:'40%', textAlign:'center', paddingTop:30}}>
                         {/* How much money made so far? */}
-                        £{monthlyTips}
+                        £{monthlyTips.toFixed(1)}
                     </Text>
                 </View>
             </View>
