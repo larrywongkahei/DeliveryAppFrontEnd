@@ -78,9 +78,9 @@ const Calculator = props => {
         }
     }
 
-    priceList?.forEach(each => {
+    priceList?.forEach((index, each) => {
         priceListToShow.push(
-            <Picker.Item label={"£" + each} value={each} />
+            <Picker.Item key={index} label={"£" + each} value={each} />
         )
     })
 

@@ -1,4 +1,4 @@
-import { SafeAreaView, View, Text } from "react-native";
+import { SafeAreaView, View, Text, TouchableOpacity } from "react-native";
 import { SplashScreen, useSearchParams } from "expo-router";
 import { useState, useEffect } from "react";
 import { Stack } from "expo-router";
@@ -95,7 +95,9 @@ function getSlipsCount(data){
                     headerStyle:{backgroundColor:"#FFC0CB"},
                     headerTitle: params.shop,
                     headerRight:() => (
-                        <Icon name="user-circle" size={35} onPress={() => {router.push({pathname:'/profile', params:{'name':params.name}})}}/>
+                        <TouchableOpacity  onPress={() => {router.push({pathname:'/profile', params:{'name':params.name}})}}>
+                            <Icon name="user-circle" size={35}/>
+                        </TouchableOpacity>
                     ),
                 }}
                 />
