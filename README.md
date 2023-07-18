@@ -1,4 +1,4 @@
-# Delivery app (Terminated)
+# Delivery app (Terminated, Fully functional)
 
 This Delivery mobile application is built with React Native and Express Node.js, This is my first approach to react native and was built for some delivery shops but terminated for some reason.
 
