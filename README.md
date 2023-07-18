@@ -1,3 +1,7 @@
+# Delivery app (Terminated)
+
+This Delivery mobile application is built with React Native and Express Node.js, This is my first approach to react native and was built for some delivery shops but terminated for some reason.
+
 # Expo Router Example
 
 Use [`expo-router`](https://expo.github.io/router) to build native navigation using files in the `app/` directory.
